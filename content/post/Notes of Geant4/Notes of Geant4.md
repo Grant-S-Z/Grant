@@ -1,6 +1,6 @@
 ---
 title: Notes of Geant4
-date: 2024-11-23 00:00:00+0000
+date: 2024-11-23
 categories:
     - Physics
     - CS
@@ -10,10 +10,7 @@ tags:
 
 ## Toolkit Fundamentals {#toolkit-fundamentals}
 
-<!-- ![Geant4 Structure](structure.png) -->
-
 ### Global Usage Classes {#global-usage-classes}
-
 
 #### Signature {#signature}
 
@@ -25,7 +22,6 @@ tags:
 
 
 ### System of Units {#system-of-units}
-
 
 #### Input {#input}
 

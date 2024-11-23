@@ -1,11 +1,12 @@
-+++
-title = "Build a blog"
-author = ["Grant"]
-lastmod = 2023-11-21T14:12:38+08:00
-tags = ["Emacs", "Hugo"]
-categories = ["CS"]
-draft = false
-+++
+---
+title: Build a Blog
+date: 2023-11-21
+categories:
+    - CS
+tags:
+    - Emacs
+    - Hugo
+---
 
 ## How to build your own blog? {#how-to-build-your-own-blog}
 
