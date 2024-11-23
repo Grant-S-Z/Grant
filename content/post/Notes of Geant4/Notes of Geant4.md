@@ -1,13 +1,11 @@
 ---
 title: Notes of Geant4
-author: Grant
-categories:
-	- Physics
-	- CS
-tags:
-	- Geant4
 date: 2024-11-23
-image: structure.png
+categories:
+    - Physics
+    - CS
+tags:
+    - Geant4
 ---
 
 ## Toolkit Fundamentals {#toolkit-fundamentals}
