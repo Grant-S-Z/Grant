@@ -2,7 +2,7 @@
 title = "Emacs 二三事"
 author = ["Grant"]
 lastmod = 2024-01-23T20:43:01+08:00
-categories = ["cs"]
+categories = ["CS"]
 tags = ["Emacs"]
 draft = false
 +++

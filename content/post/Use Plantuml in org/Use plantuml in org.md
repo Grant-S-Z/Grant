@@ -3,7 +3,7 @@ title = "Use plantuml in org"
 author = ["Grant"]
 lastmod = 2023-11-21T14:39:58+08:00
 tags = ["Emacs", "org", "plantuml"]
-categories = ["cs"]
+categories = ["CS"]
 draft = false
 +++
 
