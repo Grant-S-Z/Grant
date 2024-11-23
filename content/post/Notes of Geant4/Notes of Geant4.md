@@ -1,8 +1,8 @@
 ---
 title: Notes of Geant4
-author = Grant
-categories = physics, cs
-tags = Geant4
+author: Grant
+categories: physics, cs
+tags: Geant4
 date: 2024-11-23
 image: structure.png
 ---
