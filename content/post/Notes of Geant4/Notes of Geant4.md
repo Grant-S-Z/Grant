@@ -1,14 +1,11 @@
-+++
-title = "Notes of Geant4"
-author = ["Grant"]
-lastmod = 2024-03-08T02:11:28+08:00
-categories = ["physics", "cs"]
-tags = ["Geant4"]
-draft = false
-+++
-
 ---
-
+title: Notes of Geant4
+author = Grant
+categories = physics, cs
+tags = Geant4
+date: 2024-11-23
+image: structure.png
+---
 
 ## Toolkit Fundamentals {#toolkit-fundamentals}
 
