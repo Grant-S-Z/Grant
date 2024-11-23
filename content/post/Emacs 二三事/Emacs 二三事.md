@@ -13,7 +13,7 @@ draft = false
 
 ```bash
 brew tap railwaycat/emacsmacport
-brew install emacs-mac
+brew install emacs-mac --cask
 ```
 
 安装后 Emacs 位于路径 `/opt/homebrew/opt/emacs-mac`, 可以直接拖动 app 至程序坞。

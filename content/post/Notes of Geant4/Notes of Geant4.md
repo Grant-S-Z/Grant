@@ -2,8 +2,8 @@
 title = "Notes of Geant4"
 author = ["Grant"]
 lastmod = 2024-03-08T02:11:28+08:00
-tags = ["Geant4"]
 categories = ["physics", "cs"]
+tags = ["Geant4"]
 draft = false
 +++
 
@@ -12,8 +12,7 @@ draft = false
 
 ## Toolkit Fundamentals {#toolkit-fundamentals}
 
-{{< figure src="./img/20240308010121-notes_of_geant4userguide.org_20240308_011216.png" >}}
-
+![Geant4 Structure](./img/20240308010121-notes_of_geant4userguide.org_20240308_011216.png)
 
 ### Global Usage Classes {#global-usage-classes}
 
