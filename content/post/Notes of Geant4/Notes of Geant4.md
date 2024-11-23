@@ -12,7 +12,7 @@ draft = false
 
 ## Toolkit Fundamentals {#toolkit-fundamentals}
 
-![Geant4 Structure](./img/20240308010121-notes_of_geant4userguide.org_20240308_011216.png)
+![Geant4 Structure](structure.png)
 
 ### Global Usage Classes {#global-usage-classes}
 
