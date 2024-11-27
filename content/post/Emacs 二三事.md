@@ -1,7 +1,7 @@
 +++
 title = "Emacs 二三事"
 author = ["Grant"]
-lastmod = 2024-11-27T16:43:33+08:00
+lastmod = 2024-11-27T16:53:37+08:00
 tags = ["Emacs"]
 categories = ["CS"]
 draft = false
@@ -45,12 +45,10 @@ Basic methods:
 -   M: `dired-do-chmod`
 -   R: `dired-do-rename`
 -   U: `dired-unmark-all-marks`
--   Z: `dired-do-compress` <span class="org-target" id="org-target--Only-compress-current-file--useless-"></span>
--   c: `dired-do-compress-to` <span class="org-target" id="org-target--Can-choose-the-file-format-"></span>
+-   Z: `dired-do-compress`, which only compress current file and is useless.
+-   c: `dired-do-compress-to`, which can choose mark files and the compressed file format.
 -   v: `dired-view-file`
--   g: `revert-buffer` <span class="org-target" id="org-target--hl-2"></span> §n{Which can be used to refresh org agenda, too.}
-
-Use dirvish to beautify the UI.
+-   g: `revert-buffer`[^fn:1]
 
 
 ### Gnus {#gnus}
@@ -144,7 +142,7 @@ You should add a mode to a hook, not a mode-hook to a hook.
 
 ### Let {#let}
 
-The `let` creates a name for a _local variable_ that overshadows any use of the same name outside the `let` expression (in computer science jargon, we call this _binding_ the variable).<span class="org-target" id="org-target--When-using--setq--in--let---it-s-a-locally-modification-"></span>
+The `let` creates a name for a _local variable_ that overshadows any use of the same name outside the `let` expression (in computer science jargon, we call this _binding_ the variable).[^fn:2]
 
 ```emacs-lisp
 (let ((zebra "stripes")
@@ -219,7 +217,7 @@ Each code block can take only one option per class:
     -   vector
     -   list
     -   scalar
-    -   verbatim<span class="org-target" id="org-target--if-you-don-t-like-the-table-format-of-an-array--use-this-"></span>
+    -   verbatim: If you don't like the table format of an array, use this.
     -   file
 -   Format
     -   raw
@@ -277,7 +275,7 @@ Key bindings:
 
 注意它调用了自己写的脚本 `convert_to_pdf.py`.
 
-试了一下，完全看不了我想看的书（textbook full of formulas）. 感觉完全不适合看公式和图多的书和论文，看看别的可能还行？<span class="org-target" id="org-target--hl-1"></span> §n{不是很实用, 还是集中在对 org 做笔记和整理笔记上比较好.}
+试了一下，完全看不了我想看的书（textbook full of formulas）. 感觉完全不适合看公式和图多的书和论文，看看别的可能还行?[^fn:3]
 
 Set 2 keys:
 
@@ -353,16 +351,16 @@ Just `(require 'dap-python)` and use `pip install debugpy` and `(setq dap-python
 
 ### Calibre {#calibre}
 
-Type `cps` to start calibre-web in the virtual environment `calibre`.
+I prefer local calibre.
 
-Open your browser and navigate to <http://localhost:8083> for the OPDS catalog.
+-   You can also choose typing `cps` to start calibre-web in the virtual environment `calibre`.
 
-The most complicated password for me.
+    Open your browser and navigate to <http://localhost:8083> for the OPDS catalog.
 
 
 ### Dashboard {#dashboard}
 
-Dashboard 的 link 类型为 `widget-button`.
+Dashboard 的 link 类型为 `widget-button`. 可以通过这个 customize face.
 
 
 ### Elfeed {#elfeed}
@@ -428,7 +426,7 @@ rm -rf rime-1.7.1-osx.zip
 
 #### Punctuator {#punctuator}
 
-全部使用英文标点, 需要直接更改对应输入方案的 yaml 文件.<span class="org-target" id="org-target--rime-ice-schema-yaml-in--emacs-d-rime-for-me-"></span>
+全部使用英文标点, 需要直接更改对应输入方案的 yaml 文件.[^fn:4]
 
 ```yaml
 switches:
@@ -488,3 +486,8 @@ Good reference: [Fifteen ways to use embark](https://karthinks.com/software/fift
 Don't use character, which leads to indent mistakes.
 
 Now use `indent-bars` instead.
+
+[^fn:1]: Which can be used to refresh org agenda, too.
+[^fn:2]: When using `setq` in `let`, it's a locally modification.
+[^fn:3]: 不是很实用, 还是集中在对 org 做笔记和整理笔记上比较好.
+[^fn:4]: rime-ice.schema.yaml in .emacs.d/rime works for me.
