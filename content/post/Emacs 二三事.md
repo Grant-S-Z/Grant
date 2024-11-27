@@ -1,11 +1,14 @@
++++
+title = "Emacs 二三事"
+author = ["Grant"]
+lastmod = 2024-11-27T16:43:33+08:00
+tags = ["Emacs"]
+categories = ["CS"]
+draft = false
++++
+
 ---
-title: Emacs 二三事
-date: 2024-11-26
-categories:
-    - CS
-tags:
-    - Emacs
----
+
 
 ## Daily Life {#daily-life}
 
@@ -45,6 +48,7 @@ Basic methods:
 -   Z: `dired-do-compress` <span class="org-target" id="org-target--Only-compress-current-file--useless-"></span>
 -   c: `dired-do-compress-to` <span class="org-target" id="org-target--Can-choose-the-file-format-"></span>
 -   v: `dired-view-file`
+-   g: `revert-buffer` <span class="org-target" id="org-target--hl-2"></span> §n{Which can be used to refresh org agenda, too.}
 
 Use dirvish to beautify the UI.
 
@@ -109,7 +113,7 @@ Activate `subword-mode` to deal with camel words better in codes.
 
 ### Quote {#quote}
 
-`'(x y)` = `(quote (x y))`
+`'(x y)` = `(quote (x y))`.
 
 
 ### Backquote {#backquote}
@@ -257,7 +261,7 @@ Key bindings:
 -   DEADLINE: `C-c C-t`
 -   SCHEDULED: `C-c C-s`
 -   org-timestamp: `C-c .`
--   org-timestamp-inactive: C-c !
+-   org-timestamp-inactive: `C-c !`
 
 
 ### Packages {#packages}
@@ -434,6 +438,11 @@ switches:
 ```
 
 
+### Yasnippet {#yasnippet}
+
+Never update your snippets.
+
+
 ## UI {#ui}
 
 
@@ -477,3 +486,5 @@ Good reference: [Fifteen ways to use embark](https://karthinks.com/software/fift
 ### Highlight-indent-guides {#highlight-indent-guides}
 
 Don't use character, which leads to indent mistakes.
+
+Now use `indent-bars` instead.
