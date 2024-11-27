@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CS on Welcome to Grant's Pages.</title><link>https://grant-s-z.github.io/Grant/categories/cs/</link><description>Recent content in CS on Welcome to Grant's Pages.</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 27 Nov 2024 16:53:37 +0800</lastBuildDate><atom:link href="https://grant-s-z.github.io/Grant/categories/cs/index.xml" rel="self" type="application/rss+xml"/><item><title>Emacs 二三事</title><link>https://grant-s-z.github.io/Grant/p/emacs-%E4%BA%8C%E4%B8%89%E4%BA%8B/</link><pubDate>Wed, 27 Nov 2024 16:53:37 +0800</pubDate><guid>https://grant-s-z.github.io/Grant/p/emacs-%E4%BA%8C%E4%B8%89%E4%BA%8B/</guid><description>&lt;hr>
+&lt;h2 id="daily-life">Daily Life
+&lt;/h2>&lt;h3 id="emacs-install">Emacs install
+&lt;/h3>&lt;p>For &lt;code>debian&lt;/code> we can use&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">apt install -t bookworm-backports emacs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>to install latest version. After that we can use &lt;code>apt&lt;/code> to install &lt;code>emacs-pgtk&lt;/code>.&lt;/p>
+&lt;p>For &lt;code>MacOS&lt;/code> we can install emacs-mac by&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">brew tap
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">brew install --cask emacs-mac
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="dired">Dired
+&lt;/h3>&lt;p>Basic methods:&lt;/p>
+&lt;ul>
+&lt;li>m: &lt;code>dired-mark&lt;/code>&lt;/li>
+&lt;li>u: &lt;code>dired-unmark&lt;/code>&lt;/li>
+&lt;li>!: &lt;code>dired-do-shell-command&lt;/code>&lt;/li>
+&lt;li>+: &lt;code>dired-create-directory&lt;/code>&lt;/li>
+&lt;li>.: &lt;code>dired-clean-directory&lt;/code>&lt;/li>
+&lt;li>C: &lt;code>dired-do-copy&lt;/code>&lt;/li>
+&lt;li>D: &lt;code>dired-do-delete&lt;/code>&lt;/li>
+&lt;li>M: &lt;code>dired-do-chmod&lt;/code>&lt;/li>
+&lt;li>R: &lt;code>dired-do-rename&lt;/code>&lt;/li>
+&lt;li>U: &lt;code>dired-unmark-all-marks&lt;/code>&lt;/li>
+&lt;li>Z: &lt;code>dired-do-compress&lt;/code>, which only compress current file and is useless.&lt;/li>
+&lt;li>c: &lt;code>dired-do-compress-to&lt;/code>, which can choose mark files and the compressed file format.&lt;/li>
+&lt;li>v: &lt;code>dired-view-file&lt;/code>&lt;/li>
+&lt;li>g: &lt;code>revert-buffer&lt;/code>&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/li>
+&lt;/ul>
+&lt;h3 id="gnus">Gnus
+&lt;/h3>&lt;p>Three parts: Group buffer, Summary buffer, Article buffer.&lt;/p>
+&lt;p>Useful key bindings:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>B m&lt;/code>: Move the article from one mail group to another (to delete)&lt;/li>
+&lt;li>&lt;code>M-s&lt;/code>: Search through all subsequent articles for a regexp in Summary buffer&lt;/li>
+&lt;li>&lt;code>G G&lt;/code>: Search in Group Buffer&lt;/li>
+&lt;li>&lt;code>S r&lt;/code>: Mail a reply to the author of the current article&lt;/li>
+&lt;/ul>
+&lt;h3 id="window">Window
+&lt;/h3>&lt;p>使用 Mac 上的 Emacs 时不要把窗口最小化，不然会无响应。&lt;/p>
+&lt;h3 id="key-binding">Key Binding
+&lt;/h3>&lt;p>use-package/bind-key (prior):&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-elisp" data-lang="elisp">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nv">bind-key*&lt;/span> &lt;span class="s">&amp;#34;C-x u&amp;#34;&lt;/span> &lt;span class="nf">#&amp;#39;&lt;/span>&lt;span class="nv">hydra-undo-tree/body&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>代码整体左（右）移: &lt;code>C-x TAB&lt;/code> 后接 &amp;lt;- -&amp;gt;.&lt;/p>
+&lt;p>对应括号跳转: &lt;code>C-M-f&lt;/code> and &lt;code>C-M-b&lt;/code>.&lt;/p>
+&lt;h3 id="profiler">Profiler
+&lt;/h3>&lt;p>Use &lt;code>profiler-start&lt;/code> to monitor your functions and programs in cpu or mem.&lt;/p>
+&lt;p>Use &lt;code>profiler-report&lt;/code> to check it, so you can find which one leads to the halt of Emacs.&lt;/p>
+&lt;p>Do not forget to close this, or you have to force your Emacs to exit.&lt;/p>
+&lt;h3 id="subword">Subword
+&lt;/h3>&lt;p>Activate &lt;code>subword-mode&lt;/code> to deal with camel words better in codes.&lt;/p>
+&lt;h3 id="text-scale">Text Scale
+&lt;/h3>&lt;ul>
+&lt;li>C-x C-+: increase the font size.&lt;/li>
+&lt;li>C-x C&amp;ndash;: decrease the font size.&lt;/li>
+&lt;/ul>
+&lt;h3 id="thoughts">Thoughts
+&lt;/h3>&lt;ul>
+&lt;li>&lt;span class="timestamp-wrapper">&lt;span class="timestamp">&amp;lt;2024-10-18 Fri&amp;gt; &lt;/span>&lt;/span> Restart Emacs when changing displayer.&lt;/li>
+&lt;/ul>
+&lt;h2 id="elisp">Elisp
+&lt;/h2>&lt;h3 id="quote">Quote
+&lt;/h3>&lt;p>&lt;code>'(x y)&lt;/code> = &lt;code>(quote (x y))&lt;/code>.&lt;/p>
+&lt;h3 id="backquote">Backquote
+&lt;/h3>&lt;p>Backquote constructs allow you to quote a list, but selectively evaluate elements of that list if you use &lt;code>,&lt;/code> inside.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="line">&lt;span class="cl">&lt;span class="o">`&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nv">a&lt;/span> &lt;span class="nf">list&lt;/span> &lt;span class="nv">of&lt;/span> &lt;span class="o">,&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">+&lt;/span> &lt;span class="mi">2&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="nv">elements&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="cite">Cite
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;code>'&lt;/code>: ordinary cite&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>#'&lt;/code>: functional cite&lt;/p>
+&lt;p>&lt;code>#'foo&lt;/code> is the same as &lt;code>(function foo)&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="hook">Hook
+&lt;/h3>&lt;p>You should add a mode to a hook, not a mode-hook to a hook.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nv">add-hook&lt;/span> &lt;span class="ss">&amp;#39;prog-mode-hook&lt;/span> &lt;span class="ss">&amp;#39;outli-mode&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">;; like this&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="let">Let
+&lt;/h3>&lt;p>The &lt;code>let&lt;/code> creates a name for a &lt;em>local variable&lt;/em> that overshadows any use of the same name outside the &lt;code>let&lt;/code> expression (in computer science jargon, we call this &lt;em>binding&lt;/em> the variable).&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nb">let&lt;/span> &lt;span class="p">((&lt;/span>&lt;span class="nv">zebra&lt;/span> &lt;span class="s">&amp;#34;stripes&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">tiger&lt;/span> &lt;span class="s">&amp;#34;fierce&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nf">message&lt;/span> &lt;span class="s">&amp;#34;One kind of animal has %s and another is %s.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">zebra&lt;/span> &lt;span class="nv">tiger&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Combine &lt;code>let&lt;/code> and &lt;code>if&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nb">let*&lt;/span> &lt;span class="p">((&lt;/span>&lt;span class="nv">x&lt;/span> &lt;span class="mi">10&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">;; Use let* to assure y know x in let*&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">y&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nb">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">&amp;gt;&lt;/span> &lt;span class="nv">x&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="mi">-1&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nf">message&lt;/span> &lt;span class="s">&amp;#34;x is: %d, y is: %d&amp;#34;&lt;/span> &lt;span class="nv">x&lt;/span> &lt;span class="nv">y&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="c1">;; d-&amp;gt;value, s-&amp;gt;string&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="formatting-strings">Formatting Strings
+&lt;/h3>&lt;ul>
+&lt;li>&lt;code>%s&lt;/code>: string&lt;/li>
+&lt;li>&lt;code>%c&lt;/code>: char&lt;/li>
+&lt;li>&lt;code>%f&lt;/code>: decimal-point notation for a float&lt;/li>
+&lt;li>&lt;code>%e&lt;/code>: exponential notation for a float&lt;/li>
+&lt;li>&lt;code>%d&lt;/code>: decimal value&lt;/li>
+&lt;li>&lt;code>%x&lt;/code>: hex value&lt;/li>
+&lt;li>&lt;code>%o&lt;/code>: octal value&lt;/li>
+&lt;/ul>
+&lt;!--listend-->
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nb">let&lt;/span> &lt;span class="p">((&lt;/span>&lt;span class="nv">x&lt;/span> &lt;span class="mi">42&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">name&lt;/span> &lt;span class="s">&amp;#34;Alice&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nf">message&lt;/span> &lt;span class="s">&amp;#34;%s has number %d&amp;#34;&lt;/span> &lt;span class="nv">name&lt;/span> &lt;span class="nv">x&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="org">Org
+&lt;/h2>&lt;h3 id="beamer">Beamer
+&lt;/h3>&lt;ul>
+&lt;li>&lt;code>org-beamer-select-environment&lt;/code>: &lt;code>C-c C-b&lt;/code>. You must turn on &lt;code>org-beamer-mode&lt;/code> to use this.&lt;/li>
+&lt;/ul>
+&lt;h3 id="babel">Babel
+&lt;/h3>&lt;h4 id="graphviz">Graphviz
+&lt;/h4>&lt;p>An example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">digraph G {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> A -&amp;gt; B;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> B -&amp;gt; C;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> C -&amp;gt; A;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="result">Result
+&lt;/h4>&lt;p>Each code block can take only one option per class:&lt;/p>
+&lt;ul>
+&lt;li>Collection
+&lt;ul>
+&lt;li>value(default)&lt;/li>
+&lt;li>output&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Type: up to the result type, mostly exhibited in table.
+&lt;ul>
+&lt;li>table&lt;/li>
+&lt;li>vector&lt;/li>
+&lt;li>list&lt;/li>
+&lt;li>scalar&lt;/li>
+&lt;li>verbatim: If you don&amp;rsquo;t like the table format of an array, use this.&lt;/li>
+&lt;li>file&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Format
+&lt;ul>
+&lt;li>raw&lt;/li>
+&lt;li>code&lt;/li>
+&lt;li>drawer: wrapped in a &amp;lsquo;RESULTS&amp;rsquo; drawer for later scripting and automated processing. Use &lt;code>:wrap&lt;/code> to determine the code type of drawer blocks.&lt;/li>
+&lt;li>html&lt;/li>
+&lt;li>latex&lt;/li>
+&lt;li>link&lt;/li>
+&lt;li>graphics&lt;/li>
+&lt;li>org&lt;/li>
+&lt;li>pp&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Handling
+&lt;ul>
+&lt;li>replace&lt;/li>
+&lt;li>silent&lt;/li>
+&lt;li>none&lt;/li>
+&lt;li>discard&lt;/li>
+&lt;li>append&lt;/li>
+&lt;li>prepend&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>Use &lt;code>org-inline-pdf&lt;/code> to display pdf images inline.&lt;/p>
+&lt;h3 id="latex-preview">LaTeX Preview
+&lt;/h3>&lt;p>目前配置为一些 function + org-fragtog, 已经很好用了。&lt;/p>
+&lt;p>预计 org 9.7 有自动 preview.&lt;/p>
+&lt;ul>
+&lt;li>C-u C-u C-c C-x C-l: display image for all fragments in the buffer.&lt;/li>
+&lt;li>C-u C-u C-u C-c C-x C-l: clear image for all in the buffer.&lt;/li>
+&lt;/ul>
+&lt;h3 id="timestamps">TimeStamps
+&lt;/h3>&lt;p>My thought: only tasks need to be &lt;code>scheduled&lt;/code>, classes should not be &lt;code>scheduled&lt;/code>. Use &lt;code>org-timestamp&lt;/code> directly.&lt;/p>
+&lt;p>Key bindings:&lt;/p>
+&lt;ul>
+&lt;li>DEADLINE: &lt;code>C-c C-t&lt;/code>&lt;/li>
+&lt;li>SCHEDULED: &lt;code>C-c C-s&lt;/code>&lt;/li>
+&lt;li>org-timestamp: &lt;code>C-c .&lt;/code>&lt;/li>
+&lt;li>org-timestamp-inactive: &lt;code>C-c !&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="packages">Packages
+&lt;/h3>&lt;h4 id="org-zettel-ref">org-zettel-ref
+&lt;/h4>&lt;p>把 pdf 或一些电子书格式放到 &amp;lt;./org/zettel/tmp&amp;gt; 路径下可以转换为 org, 然后提供 org 格式下的笔记支持。&lt;/p>
+&lt;p>我认为不应该跟 org-roam 混合使用。org-roam 更应该是上课或独立思考的笔记，而非看书的旁注。&lt;/p>
+&lt;p>这个功能定位应该是替代 pdf-tools 和 org-noter.&lt;/p>
+&lt;p>注意它调用了自己写的脚本 &lt;code>convert_to_pdf.py&lt;/code>.&lt;/p>
+&lt;p>试了一下，完全看不了我想看的书（textbook full of formulas）. 感觉完全不适合看公式和图多的书和论文，看看别的可能还行?&lt;sup id="fnref:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup>&lt;/p>
+&lt;p>Set 2 keys:&lt;/p>
+&lt;ul>
+&lt;li>C-c z: &lt;code>org-zettel-ref-add-quick-note&lt;/code>&lt;/li>
+&lt;li>C-c 9: &lt;code>org-zettel-ref-quick-markup&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Remember to init it, and use it to overview your notes of org.&lt;/p>
+&lt;h4 id="org-roam">org-roam
+&lt;/h4>&lt;p>&lt;code>org-roam&lt;/code> 与 &lt;code>org-noter&lt;/code> 结合仅用于 paper reading. 读书应该使用 calibre, 或者就在当前文件夹使用 &lt;code>org-noter&lt;/code>, 或者干脆不链接, 使用 &lt;code>org-roam&lt;/code> 做笔记.&lt;/p>
+&lt;p>对于结合之后的情形, 应当将 cursor 移至有 &lt;code>org-noter&lt;/code> 链接的位置再使用 &lt;code>org-noter&lt;/code> 以找到对应的文件.&lt;/p>
+&lt;h2 id="lsp--code">Lsp (Code)
+&lt;/h2>&lt;h3 id="quickrun">Quickrun
+&lt;/h3>&lt;p>Set &lt;code>(:tempfile . nil)&lt;/code> to not create tempfiles.&lt;/p>
+&lt;h3 id="exec-path-from-shell">Exec-path-from-shell
+&lt;/h3>&lt;p>保证 pyright 补全正确的关键是让 Emacs 发现正确的 conda 环境, 需要用 exec-path-from-shell 导入 .zshrc 中的对应部分.&lt;/p>
+&lt;p>pyright 和 ruff 这些 lsp 的对应版本和安装时的 python 版本与补全无关.&lt;/p>
+&lt;h3 id="lsp-bridge">LSP-bridge
+&lt;/h3>&lt;p>为 c++ 项目提供补全时，通过在项目的根目录 &lt;code>git init&lt;/code> 来判定项目区域。&lt;/p>
+&lt;p>由此可确认项目根目录的 &lt;code>compile_command.json&lt;/code> 和 &lt;code>.clangd&lt;/code> 文件。&lt;/p>
+&lt;p>可以使用 bear 或直接使用 cmake 生成 &lt;code>compile_command.json&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="lsp-mode">LSP Mode
+&lt;/h3>&lt;h4 id="python">Python
+&lt;/h4>&lt;p>Use &lt;code>lsp-pyright&lt;/code>.&lt;/p>
+&lt;h4 id="org">Org
+&lt;/h4>&lt;p>Not a good idea to use this for literate programming.&lt;/p>
+&lt;h3 id="dap-mode">DAP Mode
+&lt;/h3>&lt;h4 id="c">C
+&lt;/h4>&lt;p>Use &lt;code>lldb-mi&lt;/code> in the &lt;code>.vscode&lt;/code> path to debug.&lt;/p>
+&lt;p>You need to &lt;code>(require dap-gdb-lldb)&lt;/code> first and run &lt;code>dap-gdb-lldb-setup&lt;/code>. Then find the path of &lt;code>lldb-mi&lt;/code> and use &lt;code>ln -s&lt;/code> to create a symbolic link in &lt;code>/usr/local/bin&lt;/code> (or other PATHs).&lt;/p>
+&lt;h4 id="python">Python
+&lt;/h4>&lt;p>Just &lt;code>(require 'dap-python)&lt;/code> and use &lt;code>pip install debugpy&lt;/code> and &lt;code>(setq dap-python-debugger 'debugpy)&lt;/code>. Much easier than C!&lt;/p>
+&lt;h2 id="packages">Packages
+&lt;/h2>&lt;h3 id="calibre">Calibre
+&lt;/h3>&lt;p>I prefer local calibre.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>You can also choose typing &lt;code>cps&lt;/code> to start calibre-web in the virtual environment &lt;code>calibre&lt;/code>.&lt;/p>
+&lt;p>Open your browser and navigate to &lt;a class="link" href="http://localhost:8083" target="_blank" rel="noopener"
+>http://localhost:8083&lt;/a> for the OPDS catalog.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="dashboard">Dashboard
+&lt;/h3>&lt;p>Dashboard 的 link 类型为 &lt;code>widget-button&lt;/code>. 可以通过这个 customize face.&lt;/p>
+&lt;h3 id="elfeed">Elfeed
+&lt;/h3>&lt;ul>
+&lt;li>-: &lt;code>elfeed-search-untag-all-unread&lt;/code>, remove &lt;strong>unread&lt;/strong> tag from all selected regions.&lt;/li>
+&lt;/ul>
+&lt;h3 id="rime">Rime
+&lt;/h3>&lt;h4 id="install-and-settings">Install and settings
+&lt;/h4>&lt;p>首先需要安装并配置鼠须管：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install --cask squirrel
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>配置方式可以参考&lt;a class="link" href="https://rime.im/docs/" target="_blank" rel="noopener"
+>帮助文档&lt;/a>, 我直接使用了雾凇拼音的&lt;a class="link" href="https://github.com/Mark24Code/rime-auto-deploy" target="_blank" rel="noopener"
+>安装脚本&lt;/a>.&lt;/p>
+&lt;p>为了在 Emacs 上使用 Rime，需要下载编译好的 librime：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -L -O https://github.com/rime/librime/releases/download/1.7.1/rime-1.7.1-osx.zip
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">unzip rime-1.7.1-osx.zip -d ~/.emacs.d/librime
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rm -rf rime-1.7.1-osx.zip
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>下面需要在 Emacs 上安装 rime. 我的配置如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-elisp" data-lang="elisp">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nb">use-package&lt;/span> &lt;span class="nv">rime&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">:custom&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">default-input-method&lt;/span> &lt;span class="s">&amp;#34;rime&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">rime-librime-root&lt;/span> &lt;span class="s">&amp;#34;~/.emacs.d/librime/dist&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">;; librime path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">rime-emacs-module-header-root&lt;/span> &lt;span class="s">&amp;#34;/opt/homebrew/cellar/emacs/29.4_1/include&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">;; emacs include path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">rime-user-data-dir&lt;/span> &lt;span class="s">&amp;#34;~/Library/Rime/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">rime-cursor&lt;/span> &lt;span class="s">&amp;#34;.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">rime-show-candidate&lt;/span> &lt;span class="ss">&amp;#39;posframe&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">rime-commit1-forall&lt;/span> &lt;span class="no">t&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">rime-posframe-properties&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nf">list&lt;/span> &lt;span class="nb">:internal-border-width&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">;; Show icon on modeline&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">mode-line-mule-info&lt;/span> &lt;span class="o">&amp;#39;&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="nb">:eval&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nv">rime-lighter&lt;/span>&lt;span class="p">))))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">;; Deactivate rime when and after using minibuffer&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">rime-deactivate-when-exit-minibuffer&lt;/span> &lt;span class="no">t&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>需要注意：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>rime-librime-root&lt;/code>: &lt;code>librime/dist&lt;/code> 位置。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>rime-emacs-module-header-root&lt;/code>&lt;/p>
+&lt;p>使用 brew 安装的 Emacs 位置与系统默认位置不一致，需要指定其头文件位置。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>rime-user-data-dir&lt;/code>: rime 配置位置。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>rime-show-candidate&lt;/code>&lt;/p>
+&lt;p>选择输入法显示方式，我使用 posframe.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>rime-commit1-forall&lt;/code>: 在输入处显示首个备选项。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="punctuator">Punctuator
+&lt;/h4>&lt;p>全部使用英文标点, 需要直接更改对应输入方案的 yaml 文件.&lt;sup id="fnref:4">&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref">4&lt;/a>&lt;/sup>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">switches&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ascii_punct&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">reset&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">states&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;¥&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;$&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="yasnippet">Yasnippet
+&lt;/h3>&lt;p>Never update your snippets.&lt;/p>
+&lt;h2 id="ui">UI
+&lt;/h2>&lt;h3 id="themes">Themes
+&lt;/h3>&lt;p>Now I am using moe theme, forked and modified by myself though.&lt;/p>
+&lt;h4 id="light">Light
+&lt;/h4>&lt;ul>
+&lt;li>&lt;code>leuven&lt;/code>: blue&lt;/li>
+&lt;li>&lt;code>spacemacs-light&lt;/code>: purple&lt;/li>
+&lt;li>&lt;code>modus-operandi-deuteranopia&lt;/code>: blue purple&lt;/li>
+&lt;li>&lt;code>moe-light&lt;/code>: vivid&lt;/li>
+&lt;li>&lt;code>flatui&lt;/code>: pure green&lt;/li>
+&lt;/ul>
+&lt;h4 id="dark">Dark
+&lt;/h4>&lt;ul>
+&lt;li>&lt;code>leuven-dark&lt;/code>: blue&lt;/li>
+&lt;li>&lt;code>doom-outrun-electric&lt;/code>: gloomy&lt;/li>
+&lt;li>&lt;code>doom-shades-of-purple&lt;/code>: purple&lt;/li>
+&lt;li>&lt;code>sanityinc-tomorrow-blue&lt;/code>: blue&lt;/li>
+&lt;li>&lt;code>modus-vivendi-deuteranopia&lt;/code>: blue purple&lt;/li>
+&lt;/ul>
+&lt;h3 id="minibuffer">Minibuffer
+&lt;/h3>&lt;h4 id="embark">Embark
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-elisp" data-lang="elisp">&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nb">use-package&lt;/span> &lt;span class="nv">embark&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">:bind&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">((&lt;/span>&lt;span class="s">&amp;#34;C-.&amp;#34;&lt;/span> &lt;span class="o">.&lt;/span> &lt;span class="nv">embark-act&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Good reference: &lt;a class="link" href="https://karthinks.com/software/fifteen-ways-to-use-embark/" target="_blank" rel="noopener"
+>Fifteen ways to use embark&lt;/a>.&lt;/p>
+&lt;h3 id="highlight-indent-guides">Highlight-indent-guides
+&lt;/h3>&lt;p>Don&amp;rsquo;t use character, which leads to indent mistakes.&lt;/p>
+&lt;p>Now use &lt;code>indent-bars&lt;/code> instead.&lt;/p>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>Which can be used to refresh org agenda, too.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2">
+&lt;p>When using &lt;code>setq&lt;/code> in &lt;code>let&lt;/code>, it&amp;rsquo;s a locally modification.&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:3">
+&lt;p>不是很实用, 还是集中在对 org 做笔记和整理笔记上比较好.&amp;#160;&lt;a href="#fnref:3" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:4">
+&lt;p>rime-ice.schema.yaml in .emacs.d/rime works for me.&amp;#160;&lt;a href="#fnref:4" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>Notes of Geant4</title><link>https://grant-s-z.github.io/Grant/p/notes-of-geant4/</link><pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/notes-of-geant4/</guid><description>&lt;h2 id="toolkit-fundamentals">Toolkit Fundamentals
+&lt;/h2>&lt;h3 id="global-usage-classes">Global Usage Classes
+&lt;/h3>&lt;h4 id="signature">Signature
+&lt;/h4>&lt;p>为了使用统一的命名方式，遵循 Geant4 的一些约定，Geant4 内核的每一个类的名字都以前缀 G4 开头。为了便于移植，在 Geant4 中使用 G4 类型(G4int, G4float, G4double 等)代替 C 中原有的类型(int, float, double 等)。&lt;/p>
+&lt;p>基本类型：G4int, G4long, G4float, G4double, G4bool, G4complex, G4String.&lt;/p>
+&lt;p>多数基本类型定义包含了头文件 globals.hh.&lt;/p>
+&lt;h3 id="system-of-units">System of Units
+&lt;/h3>&lt;h4 id="input">Input
+&lt;/h4>&lt;p>必须对引入数据指定单位：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="n">G4double&lt;/span> &lt;span class="n">Size&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">15&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">km&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">G4double&lt;/span> &lt;span class="n">density&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">11&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">mg&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">cm3&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>对于交互式命令，要求：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">/gun/energy 15.2 keV
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/gun/position 3 2 -7 meter
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="output">Output
+&lt;/h4>&lt;p>可以使用喜欢的单位输出数据，只要将这些数据除以相应的单位：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="n">G4cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">KineticEnergy&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">keV&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="s">&amp;#34; keV&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>也可以让 Geant4 来选择使用最合适的单位来输出数据，只要指定用户数据的类别(属于 Length, Time, Energy 等)，例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="n">G4cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">G4BestUnit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SetpSize&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;Length&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="run">Run
+&lt;/h3>&lt;h4 id="basic-concept">Basic Concept
+&lt;/h4>&lt;p>在 Geant4 中，Run 是一个最大的模拟单位，一个 run 由一系列的事件组成，它是 G4Run 的 一个对象，由 G4RunManager 的方法 beamOn() 启动。在一个 run 过程中，探测器几何，灵敏 探测器设置，和模拟中所使用的物理过程，都保持不变。&lt;/p>
+&lt;p>&lt;strong>G4RunManager&lt;/strong> 管理一个 run 的相关进程。其公用方法：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>initialize()&lt;/p>
+&lt;p>Geant4 内核必须的所有初始化由该方法触发，包括：&lt;/p>
+&lt;ul>
+&lt;li>探测器几何&lt;/li>
+&lt;li>粒子和物理过程&lt;/li>
+&lt;li>反应截面等计算&lt;/li>
+&lt;/ul>
+&lt;p>该方法必须在首个 run 执行之前调用。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>beamOn(G4int numberOfEvent)&lt;/p>
+&lt;p>触发一个实际的模拟过程。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>G4UserRunAction&lt;/strong> 是一个用户行为类。其虚拟方法：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>beginOfRunAction()&lt;/p>
+&lt;p>在 beamOn() 开始时被调用，常用情形：&lt;/p>
+&lt;ul>
+&lt;li>设置一个 run 标识数&lt;/li>
+&lt;li>登记一个统计图&lt;/li>
+&lt;li>设置探测器运行条件&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>endOfRunAction()&lt;/p>
+&lt;p>在 beamOn() 结束时被调用，常用情形：&lt;/p>
+&lt;ul>
+&lt;li>存储/输出统计图&lt;/li>
+&lt;li>操作 run 摘要&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="event">Event
+&lt;/h3>&lt;p>G4Event 代表一个事件，它是一个包含所有被模拟事件的输入输出信息的类的实例。这个对 象在 G4RunManager 中被创建并传递给 G4EventManager。可以通过 G4RunManager 的方法 getCurrentEvent() 获取当前正在处理的事件指针。&lt;/p>
+&lt;h2 id="detector-definition-and-response">Detector Definition and Response
+&lt;/h2>&lt;h3 id="geometry">Geometry
+&lt;/h3>&lt;h4 id="solid-volume">Solid Volume
+&lt;/h4>&lt;p>&lt;strong>Box&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="n">G4Box&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">G4String&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">pName&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">G4double&lt;/span> &lt;span class="n">pX&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">G4double&lt;/span> &lt;span class="n">pY&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">G4double&lt;/span> &lt;span class="n">pZ&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Tube&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="n">G4Tubs&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">G4String&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">pName&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">G4double&lt;/span> &lt;span class="n">pRMin&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">G4double&lt;/span> &lt;span class="n">pRMax&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">G4double&lt;/span> &lt;span class="n">pDz&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">G4double&lt;/span> &lt;span class="n">pSPhi&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">G4double&lt;/span> &lt;span class="n">pDPhi&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Full Solid Sphere&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="line">&lt;span class="cl">&lt;span class="n">G4Orb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">G4String&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">pName&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">G4double&lt;/span> &lt;span class="n">pRmax&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="logical-volume">Logical Volume
+&lt;/h4>&lt;p>逻辑体管理那些与给定实体和材料的探测器单元有关的信息，与它们在探测器中的物理位置无关。&lt;/p>
+&lt;h4 id="physical-volume">Physical Volume
+&lt;/h4>&lt;p>物理体指明了那些描述探测器单元的 volumes 的空间位置。&lt;/p>
+&lt;h3 id="material">Material
+&lt;/h3>&lt;h3 id="electromagnetic-field">Electromagnetic Field
+&lt;/h3>&lt;h3 id="hits">Hits
+&lt;/h3>&lt;h2 id="tracking-and-physics">Tracking and Physics
+&lt;/h2>&lt;h3 id="tracking">Tracking
+&lt;/h3>&lt;h3 id="physics-processes">Physics Processes
+&lt;/h3>&lt;p>物理过程描述粒子是怎样和物质发生相互作用的。&lt;/p>
+&lt;p>每个物理过程都有两组方法，GetPhysicalInteractionLength (GPIL) 和 DoIt，它们在粒子跟踪中扮演重要角色。GPIL 方法给出从当前时空位置到下个时空位置的步长，它根据物理过程的反应截面信息来计算发生反应的概率。在 step 的结尾调用 DoIt 方法。DoIt 方法实现了这个反应的细节，改变粒子的能量、动量、方向和位置，还产生次级粒子（如需要）。&lt;/p>
+&lt;h3 id="particles">Particles
+&lt;/h3>&lt;p>G4ParticleDefinition 集中了反应一个粒子属性的信息，如名称，质量，自旋，寿命和衰变模式。&lt;/p>
+&lt;h3 id="production-threshold-versus-tracking-cut">Production Threshold versus Tracking Cut
+&lt;/h3>&lt;h3 id="cuts-per-region">Cuts per Region
+&lt;/h3>&lt;h2 id="user-actions">User Actions
+&lt;/h2>&lt;h3 id="mandatory-user-actions-and-initializations">Mandatory User Actions and Initializations
+&lt;/h3>&lt;p>Geant4 有三个虚类，用户为了实现模拟必须重载它们的方法。它们要求用户定义探测器，指定将要使用的物理过程，并且描述如何初始化将要产生的粒子。&lt;/p>
+&lt;ul>
+&lt;li>G4VUserDetectorConstruction&lt;/li>
+&lt;li>G4VUserPhysicsList&lt;/li>
+&lt;li>G4VUserPrimaryGeneratorAction&lt;/li>
+&lt;/ul>
+&lt;h3 id="optional-user-actions">Optional User Actions
+&lt;/h3>&lt;p>有 5 个虚类，用于增强在不同阶段对模拟的控制，用户必须重载这些类的方法。每个 action 类的每个方法都有一个空的缺省实现，允许用户继承并实现期望的类和方法。用户 action 类的对象，必须向 G4RunManager 注册。&lt;/p>
+&lt;ul>
+&lt;li>G4UserRunAction&lt;/li>
+&lt;li>G4UserEventAction&lt;/li>
+&lt;li>G4UserStackingAction&lt;/li>
+&lt;li>G4UserTrackingAction&lt;/li>
+&lt;li>G4UserSteppingAction&lt;/li>
+&lt;/ul>
+&lt;h2 id="control">Control
+&lt;/h2></description></item><item><title>Build a Blog</title><link>https://grant-s-z.github.io/Grant/p/build-a-blog/</link><pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/build-a-blog/</guid><description>&lt;h2 id="how-to-build-your-own-blog">How to build your own blog?
+&lt;/h2>&lt;p>I wanna build my own blog for a long time. Long ago, I have heard about Hugo, which is a convenient tool to build a static website quickly.&lt;/p>
+&lt;p>Following the &lt;a class="link" href="https://www.youtube.com/watch?v=hjD9jTi_DQ4&amp;amp;list=PLeiDFxcsdhUrzkK5Jg9IZyiTsIMvXxKZP&amp;amp;index=2" target="_blank" rel="noopener"
+>course&lt;/a> of Youtube, I have probably finished it, and take a record for it now.&lt;/p>
+&lt;h3 id="install-hugo">Install Hugo
+&lt;/h3>&lt;p>Easy for Macos. Make sure that you have installed brew.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">brew install hugo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="create-local-website">Create local website
+&lt;/h3>&lt;p>Be familiar with the commands of Hugo.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">hugo new site GrantSite
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now you can open VS Code or Emacs to edit your own blogs. Use&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">hugo server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>to preview your website.&lt;/p>
+&lt;p>By the way, you can use Git to download a theme you like.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git submodule add --depth&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You also need to set your theme in your hugo.yml like this.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">theme: PaperMod
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="upload-your-website">Upload your website
+&lt;/h3>&lt;p>You need to configure github actions to publish the website to github pages. Before that, you should create a repository and upload it first.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git add README.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s2">&amp;#34;init the website&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -M main
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git remote add origin git@github.com:Grant-S-Z/GrantSite.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -u origin main
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After creating it, to make github do the jobs automatically, you need to establish the workflow. First of all, you should go to the repo actions and change the workflow permissions into &amp;ldquo;Read and write permissions&amp;rdquo;. Then, add a .github/workflows/deploy.yml file under the project root directory like this.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">name: GitHub Pages
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">on:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> push:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> branches:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - main # Set a branch to deploy
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> pull_request:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">jobs:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> deploy:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> runs-on: ubuntu-22.04
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> concurrency:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> group: ${{ github.workflow }}-${{ github.ref }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> steps:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - uses: actions/checkout@v4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> with:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> submodules: true # Fetch Hugo themes (true OR recursive)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - name: Setup Hugo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> uses: peaceiris/actions-hugo@v2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> with:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> hugo-version: &amp;#39;latest&amp;#39;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # extended: true
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - name: Build
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> run: hugo --minify
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - name: Deploy
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> uses: peaceiris/actions-gh-pages@v3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> if: github.ref == &amp;#39;refs/heads/main&amp;#39;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> with:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> github_token: ${{ secrets.GITHUB_TOKEN }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> publish_dir: ./public
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After that, you can see your website. For me, here&amp;rsquo;s &lt;a class="link" href="https://grant-s-z.github.io/GrantSite/" target="_blank" rel="noopener"
+>it&lt;/a>.&lt;/p>
+&lt;h2 id="how-to-use-emacs-to-write-blogs">How to use Emacs to write blogs?
+&lt;/h2>&lt;p>You need two packages: easy-hugo and ox-hugo.&lt;/p>
+&lt;p>Just use Emacs to install them, and it is easy to manage your blogs now.&lt;/p>
+&lt;p>Here are my settings:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">;; hugo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nb">use-package&lt;/span> &lt;span class="nv">easy-hugo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">:init&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-basedir&lt;/span> &lt;span class="s">&amp;#34;~/Code/Site/GrantSite/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">;; 网站本地文件根目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-url&lt;/span> &lt;span class="s">&amp;#34;https://Grant-S-Z.github.io/GrantSite&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">;; url 路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-sshdomain&lt;/span> &lt;span class="s">&amp;#34;Grant-S-Z.github.io&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-previewtime&lt;/span> &lt;span class="s">&amp;#34;300&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-default-ext&lt;/span> &lt;span class="s">&amp;#34;.org&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">:bind&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;C-c b&amp;#34;&lt;/span> &lt;span class="o">.&lt;/span> &lt;span class="nv">easy-hugo&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">(&lt;/span>&lt;span class="nb">use-package&lt;/span> &lt;span class="nv">ox-hugo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">:init&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">org-hugo-base-dir&lt;/span> &lt;span class="s">&amp;#34;~/Code/Site/GrantSite/&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">org-hugo-section&lt;/span> &lt;span class="s">&amp;#34;post&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">:config&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">(&lt;/span>&lt;span class="nv">ox-hugo&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Use plantuml in org</title><link>https://grant-s-z.github.io/Grant/p/use-plantuml-in-org/</link><pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/use-plantuml-in-org/</guid><description>&lt;h2 id="what-is-plantuml">What is plantuml?
+&lt;/h2>&lt;p>&lt;a class="link" href="https://plantuml.com/zh/" target="_blank" rel="noopener"
+>https://plantuml.com/zh/&lt;/a>&lt;/p>
+&lt;h2 id="plantuml-samples-in-org">Plantuml samples in org
+&lt;/h2>&lt;p>There are still many other samples waiting for my encounters.&lt;/p>
+&lt;h3 id="sequence-diagram">Sequence Diagram
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">@startuml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">scale 2560*1600
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">title Sequence Diagram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">actor User
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">box &amp;#34;Multichannel Spectrometer Program&amp;#34; #LightBlue
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant miniMCA
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant Usb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant ThdbDA
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant ThdbAD
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant PulseHeight
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant Spectrum
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant Ram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">== Before User ==
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ThdbDA --&amp;gt; ThdbAD: Analog Signal DA_DA (AD_DA)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ThdbAD --&amp;gt; PulseHeight: Digital Signal ad_data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PulseHeight --&amp;gt; Spectrum: pulse_height and pulse_indicator
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">== User Start ==
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">User -&amp;gt; miniMCA:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">miniMCA -&amp;gt; Usb: Start (usb_read_data)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Usb -&amp;gt; Spectrum: cmd_start
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Spectrum -&amp;gt; Ram: address_a and data_a
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Ram -&amp;gt; Usb: address_b and q_b
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Usb -&amp;gt; miniMCA: usb_write_data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">miniMCA -&amp;gt; User:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">@enduml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="module-diagram">Module Diagram
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">@startuml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">scale 2560*1600
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">title Module Diagram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node final01
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node ThdbDA
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node ThdbAD
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node PulseHeight
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node Spectrum
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node Usb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node isp1362
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node hex
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node ram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node pll
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- ThdbDA
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- ThdbAD
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- PulseHeight
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- Spectrum
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- Usb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- isp1362
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- hex
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- ram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- pll
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">@enduml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

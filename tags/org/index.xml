@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Org on Welcome to Grant's Pages.</title><link>https://grant-s-z.github.io/Grant/tags/org/</link><description>Recent content in Org on Welcome to Grant's Pages.</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 21 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://grant-s-z.github.io/Grant/tags/org/index.xml" rel="self" type="application/rss+xml"/><item><title>Use plantuml in org</title><link>https://grant-s-z.github.io/Grant/p/use-plantuml-in-org/</link><pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/use-plantuml-in-org/</guid><description>&lt;h2 id="what-is-plantuml">What is plantuml?
+&lt;/h2>&lt;p>&lt;a class="link" href="https://plantuml.com/zh/" target="_blank" rel="noopener"
+>https://plantuml.com/zh/&lt;/a>&lt;/p>
+&lt;h2 id="plantuml-samples-in-org">Plantuml samples in org
+&lt;/h2>&lt;p>There are still many other samples waiting for my encounters.&lt;/p>
+&lt;h3 id="sequence-diagram">Sequence Diagram
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">@startuml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">scale 2560*1600
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">title Sequence Diagram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">actor User
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">box &amp;#34;Multichannel Spectrometer Program&amp;#34; #LightBlue
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant miniMCA
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant Usb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant ThdbDA
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant ThdbAD
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant PulseHeight
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant Spectrum
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">participant Ram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">== Before User ==
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ThdbDA --&amp;gt; ThdbAD: Analog Signal DA_DA (AD_DA)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ThdbAD --&amp;gt; PulseHeight: Digital Signal ad_data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PulseHeight --&amp;gt; Spectrum: pulse_height and pulse_indicator
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">== User Start ==
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">User -&amp;gt; miniMCA:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">miniMCA -&amp;gt; Usb: Start (usb_read_data)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Usb -&amp;gt; Spectrum: cmd_start
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Spectrum -&amp;gt; Ram: address_a and data_a
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Ram -&amp;gt; Usb: address_b and q_b
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Usb -&amp;gt; miniMCA: usb_write_data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">miniMCA -&amp;gt; User:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">@enduml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="module-diagram">Module Diagram
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">@startuml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">scale 2560*1600
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">title Module Diagram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node final01
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node ThdbDA
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node ThdbAD
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node PulseHeight
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node Spectrum
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node Usb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node isp1362
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node hex
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node ram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node pll
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- ThdbDA
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- ThdbAD
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- PulseHeight
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- Spectrum
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- Usb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- isp1362
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- hex
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- ram
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">final01 -- pll
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">@enduml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
