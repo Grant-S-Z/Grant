@@ -1,3 +1,4 @@
+#+PROPERTY: header-args :exports none
 #+HUGO_CATEGORIES: Physics
 #+title: 热力学与统计物理
 #+author: Grant
@@ -61,7 +62,7 @@
 归一化可得麦克斯韦速率分布函数
 \[f(v) = 4\pi\cdot\left(\frac{m}{2\pi kT}\right)^{3/2}\cdot e^{-mv^{2}/2kT}\cdot v^{2}\]
 
-#+begin_src latex :file img/velocity_shell.svg :results file graphics :headers '("\\usepackage{tikz}" "\\usetikzlibrary{arrows.meta,patterns}")
+#+begin_src latex :file img/velocity_shell.png :results file graphics :headers '("\\usepackage{tikz}" "\\usetikzlibrary{arrows.meta,patterns}")
 \begin{tikzpicture}[>=Stealth, line join=round, line cap=round]
 
     % 定义参数
@@ -117,8 +118,8 @@
 \end{tikzpicture}  
 #+end_src
 
-#+RESULTS:
-[[file:img/velocity_shell.svg]]
+#+name: velocity shell
+[[file:img/velocity_shell.png]]
 
 
 由此得到三种统计速率：
@@ -171,6 +172,7 @@
 &\Downarrow\\
 \mathrm{d}U &= \delta Q + \delta W
 \end{align*}\]
+
 - 功：除热量外的其他能量流动。
   - 体积功：\(\delta W = -p\mathrm{d}V\)
 - 内能 \(U\) （状态量）是态函数，热量 \(Q\) 和功 \(W\) （过程量）不是。
