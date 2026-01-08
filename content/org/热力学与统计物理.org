@@ -1,0 +1,266 @@
+#+PROPERTY: header-args :exports none
+#+HUGO_CATEGORIES: Physics
+#+title: 热力学与统计物理
+#+author: Grant
+-----
+* 基本概念
+** 热平衡与温度
+- 平衡态：孤立系统的宏观性质不随时间变化。
+  - 宏观量（广延量、强度量）和微观量
+  - 态参量（态函数）：平衡态系统的一组可观测的宏观量。
+  - 状态方程：态参量的函数关系。
+- 热平衡：热接触一段时间后，两系统达到平衡态。
+- 温度：处于热平衡的不同系统的相同宏观性质，用温度 \(T\) 表征。
+- 温标：\(T\) 的数值标定。
+** 热量和热容
+- 热量: 温差导致的能量转移。
+- 热容: 物质温度升高 1K 所吸收的热量。
+  \[C = \frac{\delta Q}{\mathrm{d}T}\]
+
+  比热容、摩尔热容、定体热容、定压热容...
+- 潜热: 物质相变过程转移的热量。
+
+** 理想气体
+- 理想气体：分子间没有相互作用，分子自身体积可忽略，服从经典力学。
+- 理想气体状态方程：
+  \[pV = \nu RT\]
+- 道尔顿定律：对处于热平衡的几种理想气体混合物，总压强为各气体分压之和。
+  \[p = \left(\sum_{i}n_{i}\right)kT = \sum_{i}p_{i}\]
+- 对实际气体，考虑气体分子体积和相互作用，可以用范德瓦耳斯方程作修正：
+  \[\left(p+\nu^{2}\frac{a}{V^2}\right)(V-\nu b)=\nu RT\]
+* 气体分子动理论
+** 波尔兹曼分布
+- 波尔兹曼分布：对于处于热平衡态 \(T\) 的（经典）系统，粒子能量为 \(\epsilon\) 的概率密度满足
+  \[P(\epsilon) \propto e^{-\epsilon/kT} = e^{-\beta\epsilon}\]
+  
+- 例：外场中的分子数满足波尔兹曼分布
+  \[\mathrm{d}N_{\vec{r}}=n_{0}\cdot e^{-\epsilon_{p}(\vec{r})/kT}\cdot\mathrm{d}^{3}\vec{r}\]
+
+- 从波尔兹曼分布出发，我们可以导出麦克斯韦速度分布和能量均分定理。
+** 麦克斯韦速度分布
+- 速度分布函数
+  \[f(\vec{v})=\frac{\mathrm{d}N_{\vec{v}}}{N\mathrm{d}v_{x}\mathrm{d}v_{y}\mathrm{d}v_{z}}\]
+
+- 麦克斯韦速度分布（理想气体，无外场，平衡态）
+
+  由波尔兹曼分布可知
+  \[f(\vec{v}) \propto e^{-\frac{m\vec{v}^2}{2kT}}\]
+
+  在速度空间中归一化后可得
+  \[f(\vec{v})=\left(\frac{m}{2\pi kT}\right)^{3/2}e^{-m(v_x^2+v_y^2+v_z^2)/2kT}\]
+
+- 考虑外场，我们有麦克斯韦-波尔兹曼分布
+  \[dN = n_{0}\cdot\left(\frac{m}{2\pi KT}\right)^{3/2}\cdot e^{-(\epsilon_{p}+\epsilon_{k})/kT}\cdot\mathrm{d}^{3}\vec{r}\cdot\mathrm{d}^{3}\vec{v}\]
+
+** 麦克斯韦速率分布
+速率分布函数 \(f(v)\): 速率 \(v\) 附近，单位速率区间内分子数占总分子数的比例
+\[\frac{\mathrm{d}N_v}{N}=f(v)\mathrm{d}v\]
+
+对应速度空间中 \([v,v+\mathrm{d}v]\) 这一球壳，故
+\[f(v)\mathrm{d}v \propto 4\pi v^{2}\mathrm{d}v\cdot e^{-m(v_x^2+v_y^2+v_z^2)/2kT}\]
+
+归一化可得麦克斯韦速率分布函数
+\[f(v) = 4\pi\cdot\left(\frac{m}{2\pi kT}\right)^{3/2}\cdot e^{-mv^{2}/2kT}\cdot v^{2}\]
+
+#+begin_src latex :file img/velocity_shell.svg :results file graphics :headers '("\\usepackage{tikz}" "\\usetikzlibrary{arrows.meta,patterns}")
+\begin{tikzpicture}[>=Stealth, line join=round, line cap=round]
+
+    % 定义参数
+    \def\R{3.5}      % 外球半径（辅助圆）
+    \def\v{2.4}      % 速率 v 的半径
+    \def\dv{0.3}     % 壳层厚度 dv
+    \def\ang{30}     % 视角偏转角度
+
+    % 1. 绘制坐标轴
+    \draw[->] (0,0) -- ({-\R*0.7}, {-\R*0.7}) node[below left] {$v_x$};
+    \draw[->] (0,0) -- (\R+1, 0) node[right] {$v_y$};
+    \draw[->] (0,0) -- (0, \R+1) node[above] {$v_z$};
+
+    % 2. 绘制整个球体的轮廓（淡淡的细圆）
+    \draw[gray!50, thin] (0,0) circle (\R);
+
+    % 3. 定义切口部分的扇形和圆弧路径
+    % 我们绘制在第一卦限的一个切口，展现内部结构
+    
+    % 绘制内壳 (半径 v) 的剖面阴影
+    \fill[pattern=dots, pattern color=black!70] 
+        (0,0) -- (\v, 0) arc (0:90:\v) -- cycle;
+    \fill[pattern=dots, pattern color=black!70] 
+        (0,0) -- ({-0.7*\v}, {-0.7*\v}) arc (225:90:{\v}) -- (0,\v) -- cycle;
+    
+    % 绘制外壳空间 (v 到 v+dv 之间的区域) 的点状装饰
+    \fill[pattern=dots, pattern color=black]
+        (\v, 0) arc (0:90:\v) -- (0, \v+\dv) arc (90:0:\v+\dv) -- cycle;
+    \fill[pattern=dots, pattern color=black]
+        ({-0.7*\v}, {-0.7*\v}) arc (225:90:\v) -- (0, \v+\dv) 
+        arc (90:225:{\v+\dv}) -- cycle;
+
+    % 4. 绘制分界线条
+    % 内弧
+    \draw[thick] (\v, 0) arc (0:90:\v);
+    \draw[thick] ({-0.7*\v}, {-0.7*\v}) arc (225:90:\v);
+    \draw[thick] ({-0.7*\v}, {-0.7*\v}) -- (0,0) -- (\v, 0);
+    \draw[thick] (0,0) -- (0, \v);
+
+    % 外弧
+    \draw[thick] (\v+\dv, 0) arc (0:90:\v+\dv);
+    \draw[thick] ({-0.7*(\v+\dv)}, {-0.7*(\v+\dv)}) arc (225:90:\v+\dv);
+    \draw[thick] ({-0.7*(\v+\dv)}, {-0.7*(\v+\dv)}) -- (0,0) -- (\v+\dv, 0);
+
+    % 5. 标注 v 和 dv
+    % 标注 v 的矢量
+    \draw[->, thick] (0,0) -- (22: \v) node[midway, above] {$v$};
+    
+    % 标注 dv
+    \draw[<-] (55: \v) -- (55: \v+0.8) node[right] {$\mathrm{d}v$};
+    \draw[->] (55: \v+\dv+0.5) -- (55: \v+\dv);
+
+\end{tikzpicture}  
+#+end_src
+
+#+RESULTS:
+[[file:img/velocity_shell.svg]]
+
+
+由此得到三种统计速率：
+- 最可几 (most probable) 速率：\(v_{p} = \sqrt{2kT/m}\)
+- 平均 (average) 速率：\(\bar{v}=\int_0^{\infty}vf(v)\mathrm{d}v= \sqrt{8kT/\pi m}\)
+- 方均根 (root-mean-square) 速率：\(\sqrt{\bar{v^{2}}}=\sqrt{\int_0^{\infty}v^2 f(v)\mathrm{d}v}=\sqrt{3kT/m}\)
+** 理想气体性质：压强、通量和平均自由程
+可以从麦克斯韦速度分布出发直接推导理想气体的一些性质，例如：
+- 压强：
+  \[p = \frac{1}{3}nm\bar{v^{2}} = \frac{2}{3}n\bar{K}\]
+
+  进一步可以得到理想气体方程 \(p = nkT\)
+- 气体分子通量（分子碰壁数）：每秒撞击单位面积上的分子数。
+  \[\Phi = \frac{1}{4}n\bar{v} = \frac{p}{\sqrt{2\pi m kT}}\]
+
+  可以发现 \(\Phi \propto m^{-1/2}\), 这称为格拉姆定律。
+- 平均自由程：气体分子在相邻两次碰撞间飞行的平均路程。
+  \[\lambda = \frac{1}{\sqrt{2}n\sigma} = \frac{1}{\sqrt{2}n\cdot\pi d^{2}}\]
+** 能量均分定理
+- 自由度 \(f\)（模）：系统的每一个平方形式的能量依赖关系
+  平动 \(t\)、转动 \(r\)、振动\(s\)
+- 能量均分定理：对温度为 \(T\) 的经典系统，每一个自由度对应一个 \(\frac{1}{2}kT\) 的平均能量
+  - 一般情况下 (\(T < \qty{e3}{K}\)), 振动自由度被冻结, \(f = t + r\).
+  - 理想气体内能: \(E = fNkT/2 = f\nu RT/2\)
+
+* 输运与扩散
+** 输运与扩散
+- 黏性：动量输运
+  \[\tau_{xz} = \eta \frac{\mathrm{d}\bar{u}_x}{\mathrm{d}z}\]
+  黏性系数 \(\eta = nm\lambda\bar{v}/3\)
+- 热传导：热量输运
+  \[\vec{J} = -\kappa\nabla T\]
+  热导率 \(\kappa = C_{V}\lambda\bar{v}/3\)
+- 扩散：粒子输运
+  \[\vec{\Phi} = -D\nabla n\]
+  自扩散系数 \(D = \lambda\bar{v}/3\)
+
+* 热力学第一定律
+** 准静态过程
+- 过程：热力学系统从一个状态变化到另一个状态。
+- 准静态过程：在一个过程中，系统的每一个状态都无限接近平衡态。
+- 弛豫时间 \(\tau\)：系统平衡破坏后恢复平衡所需时间。
+  - 当 \(\Delta t_{\mathrm{process}}\gg \tau\) 时，过程可视为准静态过程。
+- 准静态过程可以用过程曲线表示
+  - \(p \text{--} V, p \text{--} T, V \text{--} T\)
+** 热力学第一定律
+热一：能量守恒，热量和功均是能量转移形式。
+\[
+\begin{align*}
+\Delta U &= \Delta Q + \Delta W\\
+&\Downarrow\\
+\mathrm{d}U &= \delta Q + \delta W
+\end{align*}
+\]
+- 功：除热量外的其他能量流动。
+  - 体积功：\(\delta W = -p\mathrm{d}V\)
+- 内能 \(U\) （状态量）是态函数，热量 \(Q\) 和功 \(W\) （过程量）不是。
+** 热容
+对内能 \(U(T, V)\), 有
+\[\mathrm{d}U = \left(\frac{\partial U}{\partial T}\right)_{V}\mathrm{d}T + \left(\frac{\partial U}{\partial V}\right)_{T}\mathrm{d}V\]
+
+代入热一，整理可得
+\[\frac{\delta Q}{\mathrm{d}T} = \left(\frac{\partial U}{\partial T}\right)_{V}+\left[\left(\frac{\partial U}{\partial V}\right)_{T}+p\right]\frac{\mathrm{d}V}{\mathrm{d}T}\]
+
+由此，定体、定压热容
+\[
+\begin{align*}
+C_{V}&=\left(\frac{\partial Q}{\partial T}\right)_{V} = \left(\frac{\partial U}{\partial T}\right)_{V}\\
+C_{P}&=\left(\frac{\partial Q}{\partial T}\right)_{p} = \left(\frac{\partial U}{\partial T}\right)_{V}+\left[\left(\frac{\partial U}{\partial V}\right)_{T}+p\right]\left(\frac{\partial V}{\partial T}\right)_{p}
+\end{align*}
+\]
+
+** 热容
+对理想气体，\(U = \nu \cdot fRT/2\), 结合 \(pV = \nu RT\) 代入热容表达式可以得到
+\[
+\begin{align*}
+C_{V} &= \frac{f}{2}R\\
+C_{p} &= (\frac{f}{2}+1)R
+\end{align*}
+\]
+
+定义绝热指数（比热容比）
+\[\gamma = \frac{C_p}{C_V} = \frac{f+2}{f}\]
+** 应用：几种过程
+- 等压：\(\mathrm{d}p = 0,\quad TV^{-1} = C\)
+- 等温：\(\mathrm{d}T = 0,\quad pV = C\)
+- 绝热：\(\delta Q = 0,\quad pV^{\gamma} = C\)
+- 等体：\(\mathrm{d}V = 0,\quad \mathrm{d}U = \delta Q\)
+- 多方：\(pV^{k} = C,\quad TV^{k-1} = C, \quad p^{k-1}T^{-k}=C\)
+
+** 应用：循环过程
+- 热循环：吸收热量对外做功
+  - 效率：
+    \[\eta = \frac{W}{Q_{1}} = 1 - \frac{Q_2}{Q_1}\]
+  - 卡诺循环：两个可逆的绝热和等温过程，\(Q_{1}/Q_{2}=T_{1}/T_{2}\), 效率
+    \[\eta_{c} = 1-\frac{T_2}{T_{1}}\]
+    温差越大效率越高。
+- 制冷循环：通过做功转移热量
+  - 效率：
+    \[\omega = \frac{Q_1}{W}\]
+  - 逆卡诺循环：效率
+    \[\omega_{c} = \frac{T_{2}}{T_{1}-T_{2}}\]
+- 奥托循环、柴油机循环...
+    
+* 热力学第二定律
+** 热力学第二定律
+- 两种表述
+  - 开尔文：热量不能全部转变为功而不产生其他影响
+  - 克劳修斯：热量不能自发地从低温传向高温物体
+- 可逆过程：可以从末态回到初态，且复原在外界引起的变化的过程。
+- 卡诺定理：工作在相同高、低温热库之间的一切可逆机效率相等，不可逆机效率低于可逆机效率。
+
+** 克劳修斯定理和熵
+- 克劳修斯定理：任一闭循环过程满足
+  \[\oint \frac{\delta Q}{T}\leq 0\]
+  循环可逆时等号成立。
+- 已知 \(\oint \delta Q_{\mathrm{rev}}/T = 0\) 即 \(\delta Q_{\mathrm{rev}}/T\) 路径无关，因此可以定义一个新的态函数
+  \[\mathrm{d}S = \frac{\delta Q_{\mathrm{rev}}}{T}\]
+  称为熵。显然可逆绝热过程熵不变。
+- 回到热一，我们有[fn:3]
+  \[\mathrm{d}U = T\mathrm{d}S-p\mathrm{d}V\]
+  进一步，我们可以推导麦克斯韦关系。
+
+** 熵增原理与熵的计算
+- 熵增原理：由克劳修斯不等式，对于一个孤立系统，\(\mathrm{d}S\geq 0\).
+- 计算
+  - 理想气体
+    \[\Delta S = S_{2}-S_{1} = \nu C_{V,m}\ln \frac{T_2}{T_1}+\nu R\ln \frac{V_2}{V_{1}}\]
+  - 计算熵变，关键是寻找一个连接初、末态的可逆过程
+- 温熵图
+** 熵的统计基础
+- 温度的统计定义[fn:1]
+  \[\frac{1}{kT} = \frac{\mathrm{d}\ln\Omega}{\mathrm{d}E}\]
+- 结合热一
+  \[\mathrm{d}U = T\mathrm{d}S-p\mathrm{d}V\]
+  可得
+  \[T =\left(\frac{\partial U}{\partial S}\right)_{V}\]
+  因此
+  \[S = k\ln\Omega\]
+
+* Footnotes
+
+[fn:1]参考 Blundell, S. J.; Blundell, K. M. Concepts in Thermal Physics. Chapter 4.
+[fn:3]因为都是态函数，对不可逆过程也成立。
