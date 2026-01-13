@@ -1,7 +1,7 @@
 +++
 title = "Emacs 二三事"
 author = ["Grant"]
-lastmod = 2024-11-27T16:53:37+08:00
+lastmod = 2026-01-13T14:04:15+08:00
 tags = ["Emacs"]
 categories = ["CS"]
 draft = false
@@ -23,12 +23,27 @@ apt install -t bookworm-backports emacs
 
 to install latest version. After that we can use `apt` to install `emacs-pgtk`.
 
-For `MacOS` we can install emacs-mac by
+For `MacOS` we can install `emacs-mac` by
 
 ```sh
 brew tap
 brew install --cask emacs-mac
 ```
+
+Now I am using emacs-plus@30. If you cannot find Emacs in </Applications>, you can use `ln -s /opt/homebrew/opt/emacs-plus@30/Emacs.app /Applications` to new a link.
+
+
+### Emacsclient {#emacsclient}
+
+Use `emacsclient` to replicate Emacs frames with one Emacs server from `emacs --daemon`.
+
+`emacs-mac` cannot use `emacsclient` to open one gui Emacs frame.
+<https://github.com/railwaycat/homebrew-emacsmacport/issues/381>
+
+
+### Buffer {#buffer}
+
+Use `C-x C-b` to skim your buffers. Now you can use `d` to mark the buffers you wanna remove, and press `x` to execute the order you want.
 
 
 ### Dired {#dired}
@@ -38,7 +53,7 @@ Basic methods:
 -   m: `dired-mark`
 -   u: `dired-unmark`
 -   !: `dired-do-shell-command`
--   +: `dired-create-directory`
+-   +: `dired-create-directory`, make a new directory.
 -   .: `dired-clean-directory`
 -   C: `dired-do-copy`
 -   D: `dired-do-delete`
@@ -65,7 +80,9 @@ Useful key bindings:
 
 ### Window {#window}
 
-使用 Mac 上的 Emacs 时不要把窗口最小化，不然会无响应。
+使用 Mac 上的 Emacs 时最好不要把窗口最小化，不然可能会无响应。
+
+使用 `C-x 5 0` 关闭 isolated window (frame).
 
 
 ### Key Binding {#key-binding}
@@ -97,8 +114,15 @@ Activate `subword-mode` to deal with camel words better in codes.
 
 ### Text Scale {#text-scale}
 
--   C-x C-+: increase the font size.
--   C-x C--: decrease the font size.
+-   `C-x C-+`: increase the font size.
+-   `C-x C--`: decrease the font size.
+
+
+### Record Position {#record-position}
+
+-   `C-spc C-spc`: mark the position.
+-   `C-u C-spc`: return the marked position.
+-   Use `remember-init` and `remember-jump` function.
 
 
 ### Thoughts {#thoughts}
@@ -181,7 +205,33 @@ Combine `let` and `if`:
 ```
 
 
+## LaTeX {#latex}
+
+
+### CDLaTeX {#cdlatex}
+
+-   `lbl + TAB`: insert label automatically.
+-   `ref + TAB`: reference label automatically.
+
+
+### RefTeX {#reftex}
+
+-   `reftex-parse-one`: update label list (environment number).
+-   `reftex-label` `C-c (` : insert label.
+-   `reftex-reference` `C-c )` : reference label.
+-   `reftex-citation` `C-c [` : cite.
+-   `reftex-toc` `C-c =` : show toc.
+
+
 ## Org {#org}
+
+
+### Output {#output}
+
+-   docx: use `#+pandoc_options: reference-doc:./templates/templates.docx`. Confirm you have installed `pandoc` and prepared the template.
+
+
+### Org Roam {#org-roam}
 
 
 ### Beamer {#beamer}
@@ -190,6 +240,10 @@ Combine `let` and `if`:
 
 
 ### Babel {#babel}
+
+-   `C-c '`: to code to avoid indentation questions.
+-   `C-c C-v b`: `org-babel-execute-buffer`.
+-   `C-c C-v s`: `org-babel-execute-subtree`.
 
 
 #### Graphviz {#graphviz}
@@ -249,6 +303,8 @@ Use `org-inline-pdf` to display pdf images inline.
 -   C-u C-u C-c C-x C-l: display image for all fragments in the buffer.
 -   C-u C-u C-u C-c C-x C-l: clear image for all in the buffer.
 
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2026-01-13 Tue&gt;</span></span>现在还没用上期待的 preview，不过 `org-xlatex` 已经很好用了。
+
 
 ### TimeStamps {#timestamps}
 
@@ -291,6 +347,8 @@ Remember to init it, and use it to overview your notes of org.
 
 对于结合之后的情形, 应当将 cursor 移至有 `org-noter` 链接的位置再使用 `org-noter` 以找到对应的文件.
 
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2026-01-13 Tue&gt;</span></span>目前完全作为笔记功能使用，阅读文献还是用 zotero 为好.
+
 
 ## Lsp (Code) {#lsp--code}
 
@@ -305,6 +363,9 @@ Set `(:tempfile . nil)` to not create tempfiles.
 保证 pyright 补全正确的关键是让 Emacs 发现正确的 conda 环境, 需要用 exec-path-from-shell 导入 .zshrc 中的对应部分.
 
 pyright 和 ruff 这些 lsp 的对应版本和安装时的 python 版本与补全无关.
+
+
+### EGLOT {#eglot}
 
 
 ### LSP-bridge {#lsp-bridge}
@@ -346,7 +407,36 @@ You need to `(require dap-gdb-lldb)` first and run `dap-gdb-lldb-setup`. Then fi
 Just `(require 'dap-python)` and use `pip install debugpy` and `(setq dap-python-debugger 'debugpy)`. Much easier than C!
 
 
+## Shell {#shell}
+
+
+### Exec-path-from-shell {#exec-path-from-shell}
+
+You should confirm the shell where Emacs start to get appropriate environment variables.
+
+
 ## Packages {#packages}
+
+
+### Use-package {#use-package}
+
+Emacs 原生 package 的某个特性用不了，可能是 elpa 路径下有同一个旧版本的 package 覆盖了。
+
+现在 (Emacs 30) 可以用 vc 进行版本控制（git, svn），例如:
+
+```emacs-lisp
+(use-package outli
+  :vc (:url "https://github.com/jdtsmith/outli"
+            :rev newest)
+  :hook (prog-mode . outli-mode))
+```
+
+
+### Magit {#magit}
+
+YYDS.
+
+-   P: push. Config to change push target.
 
 
 ### Calibre {#calibre}
@@ -441,6 +531,20 @@ switches:
 Never update your snippets.
 
 
+### Helm-bibtex {#helm-bibtex}
+
+Cannot Zotero export BibTeX? Use helm-bibtex:
+
+-   `F4`: Insert reference content, useful to beamer slide footnotes.
+-   `F5`: Insert bib key
+-   `F6`: Insert bib content
+
+
+### Atomic Chrome {#atomic-chrome}
+
+`atomic-chrome-start-server` and start `GhostText` of chrome.
+
+
 ## UI {#ui}
 
 
@@ -456,6 +560,8 @@ Now I am using moe theme, forked and modified by myself though.
 -   `modus-operandi-deuteranopia`: blue purple
 -   `moe-light`: vivid
 -   `flatui`: pure green
+-   `catppuccin`: coffee frappe
+-   `doric`
 
 
 #### Dark {#dark}
@@ -465,6 +571,10 @@ Now I am using moe theme, forked and modified by myself though.
 -   `doom-shades-of-purple`: purple
 -   `sanityinc-tomorrow-blue`: blue
 -   `modus-vivendi-deuteranopia`: blue purple
+-   `catppuccin`: coffee
+    frappe, latte, macchiato, or mocha
+-   `timu-macos`
+-   `timu-caribbean`: cyan/coral
 
 
 ### Minibuffer {#minibuffer}

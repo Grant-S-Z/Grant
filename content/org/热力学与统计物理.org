@@ -142,7 +142,7 @@
 - 自由度 \(f\)（模）：系统的每一个平方形式的能量依赖关系
   平动 \(t\)、转动 \(r\)、振动\(s\)
 - 能量均分定理：对温度为 \(T\) 的经典系统，每一个自由度对应一个 \(\frac{1}{2}kT\) 的平均能量
-  - 一般情况下 (\(T < \qty{e3}{K}\)), 振动自由度被冻结, \(f = t + r\).
+  - 一般情况下 \(T < 10^{3}~K\), 振动自由度被冻结, \(f = t + r\).
   - 理想气体内能: \(E = fNkT/2 = f\nu RT/2\)
 
 * 输运与扩散
@@ -234,7 +234,7 @@ C_{p} &= (\frac{f}{2}+1)R
 - 已知 \(\oint \delta Q_{\mathrm{rev}}/T = 0\) 即 \(\delta Q_{\mathrm{rev}}/T\) 路径无关，因此可以定义一个新的态函数
   \[\mathrm{d}S = \frac{\delta Q_{\mathrm{rev}}}{T}\]
   称为熵。显然可逆绝热过程熵不变。
-- 回到热一，我们有[fn:3]
+- 回到热一，我们有[fn:1]
   \[\mathrm{d}U = T\mathrm{d}S-p\mathrm{d}V\]
   进一步，我们可以推导麦克斯韦关系。
 
@@ -246,7 +246,7 @@ C_{p} &= (\frac{f}{2}+1)R
   - 计算熵变，关键是寻找一个连接初、末态的可逆过程
 - 温熵图
 ** 熵的统计基础
-- 温度的统计定义[fn:1]
+- 温度的统计定义[fn:2]
   \[\frac{1}{kT} = \frac{\mathrm{d}\ln\Omega}{\mathrm{d}E}\]
 - 结合热一
   \[\mathrm{d}U = T\mathrm{d}S-p\mathrm{d}V\]
@@ -257,5 +257,5 @@ C_{p} &= (\frac{f}{2}+1)R
 
 * Footnotes
 
-[fn:1]参考 Blundell, S. J.; Blundell, K. M. Concepts in Thermal Physics. Chapter 4.
-[fn:3]因为都是态函数，对不可逆过程也成立。
+[fn:2]参考 Blundell, S. J.; Blundell, K. M. Concepts in Thermal Physics. Chapter 4.
+[fn:1]因为都是态函数，对不可逆过程也成立。
