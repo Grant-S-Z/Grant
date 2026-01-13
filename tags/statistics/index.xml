@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Statistics on Welcome to Grant's Pages.</title><link>https://grant-s-z.github.io/Grant/tags/statistics/</link><description>Recent content in Statistics on Welcome to Grant's Pages.</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 26 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://grant-s-z.github.io/Grant/tags/statistics/index.xml" rel="self" type="application/rss+xml"/><item><title>辐射探测中的统计学</title><link>https://grant-s-z.github.io/Grant/p/%E8%BE%90%E5%B0%84%E6%8E%A2%E6%B5%8B%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AD%A6/</link><pubDate>Mon, 26 Aug 2024 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/%E8%BE%90%E5%B0%84%E6%8E%A2%E6%B5%8B%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AD%A6/</guid><description>&lt;h2 id="核衰变的统计分布"&gt;核衰变的统计分布
+&lt;/h2&gt;&lt;h3 id="二项式分布"&gt;二项式分布
+&lt;/h3&gt;&lt;p&gt;假设事件 \(A\) 在单次试验中发生的概率为 \(p\), 在同一试验中不发生的概率为 \(q = 1 - p\). 随机变量 \(\xi\) 表示在一组 \(N\) 次独立无关的试验中事件 \(A\) 发生的次数，则&lt;/p&gt;
+&lt;p&gt;\[P(\xi = n) = \frac{N!}{(N-n)!n!} p^{n}q^{N-n}. \tag{1}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;期望：\(E(\xi) = Np\).&lt;/li&gt;
+&lt;li&gt;方差：\(D(\xi) = Np(1 - p)\).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在核衰变过程中，基本规律为&lt;/p&gt;
+&lt;p&gt;\[N(t) = N_{0}e^{-\lambda t}. \tag{2}\]&lt;/p&gt;
+&lt;p&gt;因而，在 \(t\) 时间内发生的总衰变数为 \(n\) 的概率&lt;/p&gt;
+&lt;p&gt;\[P(\xi = n) = \frac{N_{0}!}{(N_{0} - n)!n!}(1 - e^{-\lambda t})^{n}(e^{-\lambda t})^{N_{0}-n}. \tag{3}\]&lt;/p&gt;
+&lt;h3 id="泊松分布"&gt;泊松分布
+&lt;/h3&gt;&lt;p&gt;当二项式分布中的 \(N\) 很大，\(p\) 很小且 \(m = Np\) 为不大的常数时，可化为泊松分布&lt;/p&gt;
+&lt;p&gt;\[P(\xi = n) = \frac{m^n}{n!}e^{-m}. \tag{4}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;期望：\(E(\xi) = m\).&lt;/li&gt;
+&lt;li&gt;方差：\(D(\xi) = m\).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在核衰变过程中，\(N_0\) 一般非常大，且对于较长寿命的核素，单个核衰变的概率 \(p = 1 - e^{-\lambda t} \approx \lambda t\) 非常小，\(m \approx N_{0}\lambda t\) 不太大，完全符合泊松分布条件&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id="高斯分布"&gt;高斯分布
+&lt;/h3&gt;&lt;p&gt;概率密度&lt;/p&gt;
+&lt;p&gt;\[f(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp [-\frac{(x - m)^2}{2\sigma^{2}}]. \tag{5}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;期望：\(E(X) = m\).&lt;/li&gt;
+&lt;li&gt;方差：\(D(X) = \sigma^{2}\).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以证明，当平均值 \(m \gg 1\) （一般 \(m \geq 20\)）时，泊松分布可用高斯分布代替。因而，一般情况下核衰变的统计规律也服从高斯分布。&lt;/p&gt;
+&lt;h2 id="随机变量组合的分布"&gt;随机变量组合的分布
+&lt;/h2&gt;&lt;div class="footnotes" role="doc-endnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;对于寿命非常短的核素（半衰期为秒量级及以下的核素），在一般观测时间内 \(N_{0}(1 - e^{-\lambda t})\) 比较大，不服从泊松分布。&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description></item></channel></rss>

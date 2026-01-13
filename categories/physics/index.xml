@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Physics on Welcome to Grant's Pages.</title><link>https://grant-s-z.github.io/Grant/categories/physics/</link><description>Recent content in Physics on Welcome to Grant's Pages.</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 23 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://grant-s-z.github.io/Grant/categories/physics/index.xml" rel="self" type="application/rss+xml"/><item><title>Notes of Geant4</title><link>https://grant-s-z.github.io/Grant/p/notes-of-geant4/</link><pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/notes-of-geant4/</guid><description>&lt;h2 id="toolkit-fundamentals"&gt;Toolkit Fundamentals
+&lt;/h2&gt;&lt;h3 id="global-usage-classes"&gt;Global Usage Classes
+&lt;/h3&gt;&lt;h4 id="signature"&gt;Signature
+&lt;/h4&gt;&lt;p&gt;为了使用统一的命名方式，遵循 Geant4 的一些约定，Geant4 内核的每一个类的名字都以前缀 G4 开头。为了便于移植，在 Geant4 中使用 G4 类型(G4int, G4float, G4double 等)代替 C 中原有的类型(int, float, double 等)。&lt;/p&gt;
+&lt;p&gt;基本类型：G4int, G4long, G4float, G4double, G4bool, G4complex, G4String.&lt;/p&gt;
+&lt;p&gt;多数基本类型定义包含了头文件 globals.hh.&lt;/p&gt;
+&lt;h3 id="system-of-units"&gt;System of Units
+&lt;/h3&gt;&lt;h4 id="input"&gt;Input
+&lt;/h4&gt;&lt;p&gt;必须对引入数据指定单位：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;Size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;km&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;density&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;mg&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;cm3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;对于交互式命令，要求：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/gun/energy 15.2 keV
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/gun/position 3 2 -7 meter
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id="output"&gt;Output
+&lt;/h4&gt;&lt;p&gt;可以使用喜欢的单位输出数据，只要将这些数据除以相应的单位：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4cout&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KineticEnergy&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;keV&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="s"&gt;&amp;#34; keV&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;也可以让 Geant4 来选择使用最合适的单位来输出数据，只要指定用户数据的类别(属于 Length, Time, Energy 等)，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4cout&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;G4BestUnit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SetpSize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;Length&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="run"&gt;Run
+&lt;/h3&gt;&lt;h4 id="basic-concept"&gt;Basic Concept
+&lt;/h4&gt;&lt;p&gt;在 Geant4 中，Run 是一个最大的模拟单位，一个 run 由一系列的事件组成，它是 G4Run 的 一个对象，由 G4RunManager 的方法 beamOn() 启动。在一个 run 过程中，探测器几何，灵敏 探测器设置，和模拟中所使用的物理过程，都保持不变。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;G4RunManager&lt;/strong&gt; 管理一个 run 的相关进程。其公用方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;initialize()&lt;/p&gt;
+&lt;p&gt;Geant4 内核必须的所有初始化由该方法触发，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;探测器几何&lt;/li&gt;
+&lt;li&gt;粒子和物理过程&lt;/li&gt;
+&lt;li&gt;反应截面等计算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;该方法必须在首个 run 执行之前调用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;beamOn(G4int numberOfEvent)&lt;/p&gt;
+&lt;p&gt;触发一个实际的模拟过程。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;G4UserRunAction&lt;/strong&gt; 是一个用户行为类。其虚拟方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;beginOfRunAction()&lt;/p&gt;
+&lt;p&gt;在 beamOn() 开始时被调用，常用情形：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置一个 run 标识数&lt;/li&gt;
+&lt;li&gt;登记一个统计图&lt;/li&gt;
+&lt;li&gt;设置探测器运行条件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;endOfRunAction()&lt;/p&gt;
+&lt;p&gt;在 beamOn() 结束时被调用，常用情形：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储/输出统计图&lt;/li&gt;
+&lt;li&gt;操作 run 摘要&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="event"&gt;Event
+&lt;/h3&gt;&lt;p&gt;G4Event 代表一个事件，它是一个包含所有被模拟事件的输入输出信息的类的实例。这个对 象在 G4RunManager 中被创建并传递给 G4EventManager。可以通过 G4RunManager 的方法 getCurrentEvent() 获取当前正在处理的事件指针。&lt;/p&gt;
+&lt;h2 id="detector-definition-and-response"&gt;Detector Definition and Response
+&lt;/h2&gt;&lt;h3 id="geometry"&gt;Geometry
+&lt;/h3&gt;&lt;h4 id="solid-volume"&gt;Solid Volume
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Box&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4Box&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;G4String&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;pName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pZ&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Tube&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4Tubs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;G4String&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;pName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pRMin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pRMax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pDz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pSPhi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pDPhi&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Full Solid Sphere&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4Orb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;G4String&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;pName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pRmax&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id="logical-volume"&gt;Logical Volume
+&lt;/h4&gt;&lt;p&gt;逻辑体管理那些与给定实体和材料的探测器单元有关的信息，与它们在探测器中的物理位置无关。&lt;/p&gt;
+&lt;h4 id="physical-volume"&gt;Physical Volume
+&lt;/h4&gt;&lt;p&gt;物理体指明了那些描述探测器单元的 volumes 的空间位置。&lt;/p&gt;
+&lt;h3 id="material"&gt;Material
+&lt;/h3&gt;&lt;h3 id="electromagnetic-field"&gt;Electromagnetic Field
+&lt;/h3&gt;&lt;h3 id="hits"&gt;Hits
+&lt;/h3&gt;&lt;h2 id="tracking-and-physics"&gt;Tracking and Physics
+&lt;/h2&gt;&lt;h3 id="tracking"&gt;Tracking
+&lt;/h3&gt;&lt;h3 id="physics-processes"&gt;Physics Processes
+&lt;/h3&gt;&lt;p&gt;物理过程描述粒子是怎样和物质发生相互作用的。&lt;/p&gt;
+&lt;p&gt;每个物理过程都有两组方法，GetPhysicalInteractionLength (GPIL) 和 DoIt，它们在粒子跟踪中扮演重要角色。GPIL 方法给出从当前时空位置到下个时空位置的步长，它根据物理过程的反应截面信息来计算发生反应的概率。在 step 的结尾调用 DoIt 方法。DoIt 方法实现了这个反应的细节，改变粒子的能量、动量、方向和位置，还产生次级粒子（如需要）。&lt;/p&gt;
+&lt;h3 id="particles"&gt;Particles
+&lt;/h3&gt;&lt;p&gt;G4ParticleDefinition 集中了反应一个粒子属性的信息，如名称，质量，自旋，寿命和衰变模式。&lt;/p&gt;
+&lt;h3 id="production-threshold-versus-tracking-cut"&gt;Production Threshold versus Tracking Cut
+&lt;/h3&gt;&lt;h3 id="cuts-per-region"&gt;Cuts per Region
+&lt;/h3&gt;&lt;h2 id="user-actions"&gt;User Actions
+&lt;/h2&gt;&lt;h3 id="mandatory-user-actions-and-initializations"&gt;Mandatory User Actions and Initializations
+&lt;/h3&gt;&lt;p&gt;Geant4 有三个虚类，用户为了实现模拟必须重载它们的方法。它们要求用户定义探测器，指定将要使用的物理过程，并且描述如何初始化将要产生的粒子。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;G4VUserDetectorConstruction&lt;/li&gt;
+&lt;li&gt;G4VUserPhysicsList&lt;/li&gt;
+&lt;li&gt;G4VUserPrimaryGeneratorAction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="optional-user-actions"&gt;Optional User Actions
+&lt;/h3&gt;&lt;p&gt;有 5 个虚类，用于增强在不同阶段对模拟的控制，用户必须重载这些类的方法。每个 action 类的每个方法都有一个空的缺省实现，允许用户继承并实现期望的类和方法。用户 action 类的对象，必须向 G4RunManager 注册。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;G4UserRunAction&lt;/li&gt;
+&lt;li&gt;G4UserEventAction&lt;/li&gt;
+&lt;li&gt;G4UserStackingAction&lt;/li&gt;
+&lt;li&gt;G4UserTrackingAction&lt;/li&gt;
+&lt;li&gt;G4UserSteppingAction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="control"&gt;Control
+&lt;/h2&gt;</description></item><item><title>辐射探测中的统计学</title><link>https://grant-s-z.github.io/Grant/p/%E8%BE%90%E5%B0%84%E6%8E%A2%E6%B5%8B%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AD%A6/</link><pubDate>Mon, 26 Aug 2024 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/%E8%BE%90%E5%B0%84%E6%8E%A2%E6%B5%8B%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AD%A6/</guid><description>&lt;h2 id="核衰变的统计分布"&gt;核衰变的统计分布
+&lt;/h2&gt;&lt;h3 id="二项式分布"&gt;二项式分布
+&lt;/h3&gt;&lt;p&gt;假设事件 \(A\) 在单次试验中发生的概率为 \(p\), 在同一试验中不发生的概率为 \(q = 1 - p\). 随机变量 \(\xi\) 表示在一组 \(N\) 次独立无关的试验中事件 \(A\) 发生的次数，则&lt;/p&gt;
+&lt;p&gt;\[P(\xi = n) = \frac{N!}{(N-n)!n!} p^{n}q^{N-n}. \tag{1}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;期望：\(E(\xi) = Np\).&lt;/li&gt;
+&lt;li&gt;方差：\(D(\xi) = Np(1 - p)\).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在核衰变过程中，基本规律为&lt;/p&gt;
+&lt;p&gt;\[N(t) = N_{0}e^{-\lambda t}. \tag{2}\]&lt;/p&gt;
+&lt;p&gt;因而，在 \(t\) 时间内发生的总衰变数为 \(n\) 的概率&lt;/p&gt;
+&lt;p&gt;\[P(\xi = n) = \frac{N_{0}!}{(N_{0} - n)!n!}(1 - e^{-\lambda t})^{n}(e^{-\lambda t})^{N_{0}-n}. \tag{3}\]&lt;/p&gt;
+&lt;h3 id="泊松分布"&gt;泊松分布
+&lt;/h3&gt;&lt;p&gt;当二项式分布中的 \(N\) 很大，\(p\) 很小且 \(m = Np\) 为不大的常数时，可化为泊松分布&lt;/p&gt;
+&lt;p&gt;\[P(\xi = n) = \frac{m^n}{n!}e^{-m}. \tag{4}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;期望：\(E(\xi) = m\).&lt;/li&gt;
+&lt;li&gt;方差：\(D(\xi) = m\).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在核衰变过程中，\(N_0\) 一般非常大，且对于较长寿命的核素，单个核衰变的概率 \(p = 1 - e^{-\lambda t} \approx \lambda t\) 非常小，\(m \approx N_{0}\lambda t\) 不太大，完全符合泊松分布条件&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id="高斯分布"&gt;高斯分布
+&lt;/h3&gt;&lt;p&gt;概率密度&lt;/p&gt;
+&lt;p&gt;\[f(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp [-\frac{(x - m)^2}{2\sigma^{2}}]. \tag{5}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;期望：\(E(X) = m\).&lt;/li&gt;
+&lt;li&gt;方差：\(D(X) = \sigma^{2}\).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以证明，当平均值 \(m \gg 1\) （一般 \(m \geq 20\)）时，泊松分布可用高斯分布代替。因而，一般情况下核衰变的统计规律也服从高斯分布。&lt;/p&gt;
+&lt;h2 id="随机变量组合的分布"&gt;随机变量组合的分布
+&lt;/h2&gt;&lt;div class="footnotes" role="doc-endnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;对于寿命非常短的核素（半衰期为秒量级及以下的核素），在一般观测时间内 \(N_{0}(1 - e^{-\lambda t})\) 比较大，不服从泊松分布。&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description></item><item><title>热力学与统计物理</title><link>https://grant-s-z.github.io/Grant/p/%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E7%BB%9F%E8%AE%A1%E7%89%A9%E7%90%86/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E7%BB%9F%E8%AE%A1%E7%89%A9%E7%90%86/</guid><description>&lt;hr&gt;
+&lt;h2 id="基本概念"&gt;基本概念
+&lt;/h2&gt;&lt;h3 id="热平衡与温度"&gt;热平衡与温度
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;平衡态：孤立系统的宏观性质不随时间变化。
+&lt;ul&gt;
+&lt;li&gt;宏观量（广延量、强度量）和微观量&lt;/li&gt;
+&lt;li&gt;态参量（态函数）：平衡态系统的一组可观测的宏观量。&lt;/li&gt;
+&lt;li&gt;状态方程：态参量的函数关系。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;热平衡：热接触一段时间后，两系统达到平衡态。&lt;/li&gt;
+&lt;li&gt;温度：处于热平衡的不同系统的相同宏观性质，用温度 \(T\) 表征。&lt;/li&gt;
+&lt;li&gt;温标：\(T\) 的数值标定。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="热量和热容"&gt;热量和热容
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;热量: 温差导致的能量转移。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;热容: 物质温度升高 1K 所吸收的热量。
+\[C = \frac{\delta Q}{\mathrm{d}T}\]&lt;/p&gt;
+&lt;p&gt;比热容、摩尔热容、定体热容、定压热容&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;潜热: 物质相变过程转移的热量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="理想气体"&gt;理想气体
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;理想气体：分子间没有相互作用，分子自身体积可忽略，服从经典力学。&lt;/li&gt;
+&lt;li&gt;理想气体状态方程：
+\[pV = \nu RT\]&lt;/li&gt;
+&lt;li&gt;道尔顿定律：对处于热平衡的几种理想气体混合物，总压强为各气体分压之和。
+\[p = \left(\sum_{i}n_{i}\right)kT = \sum_{i}p_{i}\]&lt;/li&gt;
+&lt;li&gt;对实际气体，考虑气体分子体积和相互作用，可以用范德瓦耳斯方程作修正：
+\[\left(p+\nu^{2}\frac{a}{V^2}\right)(V-\nu b)=\nu RT\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="气体分子动理论"&gt;气体分子动理论
+&lt;/h2&gt;&lt;h3 id="波尔兹曼分布"&gt;波尔兹曼分布
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;波尔兹曼分布：对于处于热平衡态 \(T\) 的（经典）系统，粒子能量为 \(\epsilon\) 的概率密度满足
+\[P(\epsilon) \propto e^{-\epsilon/kT} = e^{-\beta\epsilon}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;例：外场中的分子数满足波尔兹曼分布
+\[\mathrm{d}N_{\vec{r}}=n_{0}\cdot e^{-\epsilon_{p}(\vec{r})/kT}\cdot\mathrm{d}^{3}\vec{r}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从波尔兹曼分布出发，我们可以导出麦克斯韦速度分布和能量均分定理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="麦克斯韦速度分布"&gt;麦克斯韦速度分布
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;速度分布函数
+\[f(\vec{v})=\frac{\mathrm{d}N_{\vec{v}}}{N\mathrm{d}v_{x}\mathrm{d}v_{y}\mathrm{d}v_{z}}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;麦克斯韦速度分布（理想气体，无外场，平衡态）&lt;/p&gt;
+&lt;p&gt;由波尔兹曼分布可知
+\[f(\vec{v}) \propto e^{-\frac{m\vec{v}^2}{2kT}}\]&lt;/p&gt;
+&lt;p&gt;在速度空间中归一化后可得
+\[f(\vec{v})=\left(\frac{m}{2\pi kT}\right)^{3/2}e^{-m(v_x^2+v_y^2+v_z^2)/2kT}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;考虑外场，我们有麦克斯韦-波尔兹曼分布
+\[dN = n_{0}\cdot\left(\frac{m}{2\pi KT}\right)^{3/2}\cdot e^{-(\epsilon_{p}+\epsilon_{k})/kT}\cdot\mathrm{d}^{3}\vec{r}\cdot\mathrm{d}^{3}\vec{v}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="麦克斯韦速率分布"&gt;麦克斯韦速率分布
+&lt;/h3&gt;&lt;p&gt;速率分布函数 \(f(v)\): 速率 \(v\) 附近，单位速率区间内分子数占总分子数的比例
+\[\frac{\mathrm{d}N_v}{N}=f(v)\mathrm{d}v\]&lt;/p&gt;
+&lt;p&gt;对应速度空间中 \([v,v+\mathrm{d}v]\) 这一球壳，故
+\[f(v)\mathrm{d}v \propto 4\pi v^{2}\mathrm{d}v\cdot e^{-m(v_x^2+v_y^2+v_z^2)/2kT}\]&lt;/p&gt;
+&lt;p&gt;归一化可得麦克斯韦速率分布函数
+\[f(v) = 4\pi\cdot\left(\frac{m}{2\pi kT}\right)^{3/2}\cdot e^{-mv^{2}/2kT}\cdot v^{2}\]&lt;/p&gt;
+&lt;p&gt;&lt;a id="figure--velocity shell"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://grant-s-z.github.io/Grant/ox-hugo/velocity_shell.png"&gt;
+&lt;/figure&gt;
+&lt;p&gt;由此得到三种统计速率：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最可几 (most probable) 速率：\(v_{p} = \sqrt{2kT/m}\)&lt;/li&gt;
+&lt;li&gt;平均 (average) 速率：\(\bar{v}=\int_0^{\infty}vf(v)\mathrm{d}v= \sqrt{8kT/\pi m}\)&lt;/li&gt;
+&lt;li&gt;方均根 (root-mean-square) 速率：\(\sqrt{\bar{v^{2}}}=\sqrt{\int_0^{\infty}v^2 f(v)\mathrm{d}v}=\sqrt{3kT/m}\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="理想气体性质-压强-通量和平均自由程"&gt;理想气体性质：压强、通量和平均自由程
+&lt;/h3&gt;&lt;p&gt;可以从麦克斯韦速度分布出发直接推导理想气体的一些性质，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;压强：
+\[p = \frac{1}{3}nm\bar{v^{2}} = \frac{2}{3}n\bar{K}\]&lt;/p&gt;
+&lt;p&gt;进一步可以得到理想气体方程 \(p = nkT\)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;气体分子通量（分子碰壁数）：每秒撞击单位面积上的分子数。
+\[\Phi = \frac{1}{4}n\bar{v} = \frac{p}{\sqrt{2\pi m kT}}\]&lt;/p&gt;
+&lt;p&gt;可以发现 \(\Phi \propto m^{-1/2}\), 这称为格拉姆定律。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;平均自由程：气体分子在相邻两次碰撞间飞行的平均路程。
+\[\lambda = \frac{1}{\sqrt{2}n\sigma} = \frac{1}{\sqrt{2}n\cdot\pi d^{2}}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="能量均分定理"&gt;能量均分定理
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;自由度 \(f\)（模）：系统的每一个平方形式的能量依赖关系
+平动 \(t\)、转动 \(r\)、振动\(s\)&lt;/li&gt;
+&lt;li&gt;能量均分定理：对温度为 \(T\) 的经典系统，每一个自由度对应一个 \(\frac{1}{2}kT\) 的平均能量
+&lt;ul&gt;
+&lt;li&gt;一般情况下 (\(T &amp;lt; \qty{e3}{K}\)), 振动自由度被冻结, \(f = t + r\).&lt;/li&gt;
+&lt;li&gt;理想气体内能: \(E = fNkT/2 = f\nu RT/2\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="输运与扩散"&gt;输运与扩散
+&lt;/h2&gt;&lt;h3 id="输运与扩散"&gt;输运与扩散
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;黏性：动量输运
+\[\tau_{xz} = \eta \frac{\mathrm{d}\bar{u}_x}{\mathrm{d}z}\]
+黏性系数 \(\eta = nm\lambda\bar{v}/3\)&lt;/li&gt;
+&lt;li&gt;热传导：热量输运
+\[\vec{J} = -\kappa\nabla T\]
+热导率 \(\kappa = C_{V}\lambda\bar{v}/3\)&lt;/li&gt;
+&lt;li&gt;扩散：粒子输运
+\[\vec{\Phi} = -D\nabla n\]
+自扩散系数 \(D = \lambda\bar{v}/3\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="热力学第一定律"&gt;热力学第一定律
+&lt;/h2&gt;&lt;h3 id="准静态过程"&gt;准静态过程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;过程：热力学系统从一个状态变化到另一个状态。&lt;/li&gt;
+&lt;li&gt;准静态过程：在一个过程中，系统的每一个状态都无限接近平衡态。&lt;/li&gt;
+&lt;li&gt;弛豫时间 \(\tau\)：系统平衡破坏后恢复平衡所需时间。
+&lt;ul&gt;
+&lt;li&gt;当 \(\Delta t_{\mathrm{process}}\gg \tau\) 时，过程可视为准静态过程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;准静态过程可以用过程曲线表示
+&lt;ul&gt;
+&lt;li&gt;\(p \text{&amp;ndash;} V, p \text{&amp;ndash;} T, V \text{&amp;ndash;} T\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="热力学第一定律"&gt;热力学第一定律
+&lt;/h3&gt;&lt;p&gt;热一：能量守恒，热量和功均是能量转移形式。
+\[\begin{align*}
+\Delta U &amp;amp;= \Delta Q + \Delta W\\
+&amp;amp;\Downarrow\\
+\mathrm{d}U &amp;amp;= \delta Q + \delta W
+\end{align*}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;功：除热量外的其他能量流动。
+&lt;ul&gt;
+&lt;li&gt;体积功：\(\delta W = -p\mathrm{d}V\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;内能 \(U\) （状态量）是态函数，热量 \(Q\) 和功 \(W\) （过程量）不是。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="热容"&gt;热容
+&lt;/h3&gt;&lt;p&gt;对内能 \(U(T, V)\), 有
+\[\mathrm{d}U = \left(\frac{\partial U}{\partial T}\right)_{V}\mathrm{d}T + \left(\frac{\partial U}{\partial V}\right)_{T}\mathrm{d}V\]&lt;/p&gt;
+&lt;p&gt;代入热一，整理可得
+\[\frac{\delta Q}{\mathrm{d}T} = \left(\frac{\partial U}{\partial T}\right)_{V}+\left[\left(\frac{\partial U}{\partial V}\right)_{T}+p\right]\frac{\mathrm{d}V}{\mathrm{d}T}\]&lt;/p&gt;
+&lt;p&gt;由此，定体、定压热容
+\[\begin{align*}
+C_{V}&amp;amp;=\left(\frac{\partial Q}{\partial T}\right)_{V} = \left(\frac{\partial U}{\partial T}\right)_{V}\\
+C_{P}&amp;amp;=\left(\frac{\partial Q}{\partial T}\right)_{p} = \left(\frac{\partial U}{\partial T}\right)_{V}+\left[\left(\frac{\partial U}{\partial V}\right)_{T}+p\right]\left(\frac{\partial V}{\partial T}\right)_{p}
+\end{align*}\]&lt;/p&gt;
+&lt;h3 id="热容"&gt;热容
+&lt;/h3&gt;&lt;p&gt;对理想气体，\(U = \nu \cdot fRT/2\), 结合 \(pV = \nu RT\) 代入热容表达式可以得到
+\[\begin{align*}
+C_{V} &amp;amp;= \frac{f}{2}R\\
+C_{p} &amp;amp;= (\frac{f}{2}+1)R
+\end{align*}\]&lt;/p&gt;
+&lt;p&gt;定义绝热指数（比热容比）
+\[\gamma = \frac{C_p}{C_V} = \frac{f+2}{f}\]&lt;/p&gt;
+&lt;h3 id="应用-几种过程"&gt;应用：几种过程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;等压：\(\mathrm{d}p = 0,\quad TV^{-1} = C\)&lt;/li&gt;
+&lt;li&gt;等温：\(\mathrm{d}T = 0,\quad pV = C\)&lt;/li&gt;
+&lt;li&gt;绝热：\(\delta Q = 0,\quad pV^{\gamma} = C\)&lt;/li&gt;
+&lt;li&gt;等体：\(\mathrm{d}V = 0,\quad \mathrm{d}U = \delta Q\)&lt;/li&gt;
+&lt;li&gt;多方：\(pV^{k} = C,\quad TV^{k-1} = C, \quad p^{k-1}T^{-k}=C\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="应用-循环过程"&gt;应用：循环过程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;热循环：吸收热量对外做功
+&lt;ul&gt;
+&lt;li&gt;效率：
+\[\eta = \frac{W}{Q_{1}} = 1 - \frac{Q_2}{Q_1}\]&lt;/li&gt;
+&lt;li&gt;卡诺循环：两个可逆的绝热和等温过程，\(Q_{1}/Q_{2}=T_{1}/T_{2}\), 效率
+\[\eta_{c} = 1-\frac{T_2}{T_{1}}\]
+温差越大效率越高。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;制冷循环：通过做功转移热量
+&lt;ul&gt;
+&lt;li&gt;效率：
+\[\omega = \frac{Q_1}{W}\]&lt;/li&gt;
+&lt;li&gt;逆卡诺循环：效率
+\[\omega_{c} = \frac{T_{2}}{T_{1}-T_{2}}\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;奥托循环、柴油机循环&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="热力学第二定律"&gt;热力学第二定律
+&lt;/h2&gt;&lt;h3 id="热力学第二定律"&gt;热力学第二定律
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;两种表述
+&lt;ul&gt;
+&lt;li&gt;开尔文：热量不能全部转变为功而不产生其他影响&lt;/li&gt;
+&lt;li&gt;克劳修斯：热量不能自发地从低温传向高温物体&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;可逆过程：可以从末态回到初态，且复原在外界引起的变化的过程。&lt;/li&gt;
+&lt;li&gt;卡诺定理：工作在相同高、低温热库之间的一切可逆机效率相等，不可逆机效率低于可逆机效率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="克劳修斯定理和熵"&gt;克劳修斯定理和熵
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;克劳修斯定理：任一闭循环过程满足
+\[\oint \frac{\delta Q}{T}\leq 0\]
+循环可逆时等号成立。&lt;/li&gt;
+&lt;li&gt;已知 \(\oint \delta Q_{\mathrm{rev}}/T = 0\) 即 \(\delta Q_{\mathrm{rev}}/T\) 路径无关，因此可以定义一个新的态函数
+\[\mathrm{d}S = \frac{\delta Q_{\mathrm{rev}}}{T}\]
+称为熵。显然可逆绝热过程熵不变。&lt;/li&gt;
+&lt;li&gt;回到热一，我们有&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;
+\[\mathrm{d}U = T\mathrm{d}S-p\mathrm{d}V\]
+进一步，我们可以推导麦克斯韦关系。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="熵增原理与熵的计算"&gt;熵增原理与熵的计算
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;熵增原理：由克劳修斯不等式，对于一个孤立系统，\(\mathrm{d}S\geq 0\).&lt;/li&gt;
+&lt;li&gt;计算
+&lt;ul&gt;
+&lt;li&gt;理想气体
+\[\Delta S = S_{2}-S_{1} = \nu C_{V,m}\ln \frac{T_2}{T_1}+\nu R\ln \frac{V_2}{V_{1}}\]&lt;/li&gt;
+&lt;li&gt;计算熵变，关键是寻找一个连接初、末态的可逆过程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;温熵图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="熵的统计基础"&gt;熵的统计基础
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;温度的统计定义&lt;sup id="fnref:2"&gt;&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref"&gt;2&lt;/a&gt;&lt;/sup&gt;
+\[\frac{1}{kT} = \frac{\mathrm{d}\ln\Omega}{\mathrm{d}E}\]&lt;/li&gt;
+&lt;li&gt;结合热一
+\[\mathrm{d}U = T\mathrm{d}S-p\mathrm{d}V\]
+可得
+\[T =\left(\frac{\partial U}{\partial S}\right)_{V}\]
+因此
+\[S = k\ln\Omega\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="footnotes" role="doc-endnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;因为都是态函数，对不可逆过程也成立。&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;参考 Blundell, S. J.; Blundell, K. M. Concepts in Thermal Physics. Chapter 4.&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description></item></channel></rss>

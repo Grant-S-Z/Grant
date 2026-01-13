@@ -1,0 +1,1413 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Welcome to Grant's Pages.</title><link>https://grant-s-z.github.io/Grant/post/</link><description>Recent content in Posts on Welcome to Grant's Pages.</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 13 Jan 2026 14:04:15 +0800</lastBuildDate><atom:link href="https://grant-s-z.github.io/Grant/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Emacs 二三事</title><link>https://grant-s-z.github.io/Grant/p/emacs-%E4%BA%8C%E4%B8%89%E4%BA%8B/</link><pubDate>Tue, 13 Jan 2026 14:04:15 +0800</pubDate><guid>https://grant-s-z.github.io/Grant/p/emacs-%E4%BA%8C%E4%B8%89%E4%BA%8B/</guid><description>&lt;hr&gt;
+&lt;h2 id="daily-life"&gt;Daily Life
+&lt;/h2&gt;&lt;h3 id="emacs-install"&gt;Emacs install
+&lt;/h3&gt;&lt;p&gt;For &lt;code&gt;debian&lt;/code&gt; we can use&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;apt install -t bookworm-backports emacs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;to install latest version. After that we can use &lt;code&gt;apt&lt;/code&gt; to install &lt;code&gt;emacs-pgtk&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For &lt;code&gt;MacOS&lt;/code&gt; we can install &lt;code&gt;emacs-mac&lt;/code&gt; by&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew tap
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install --cask emacs-mac
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Now I am using emacs-plus@30. If you cannot find Emacs in &lt;/Applications&gt;, you can use &lt;code&gt;ln -s /opt/homebrew/opt/emacs-plus@30/Emacs.app /Applications&lt;/code&gt; to new a link.&lt;/p&gt;
+&lt;h3 id="emacsclient"&gt;Emacsclient
+&lt;/h3&gt;&lt;p&gt;Use &lt;code&gt;emacsclient&lt;/code&gt; to replicate Emacs frames with one Emacs server from &lt;code&gt;emacs --daemon&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;emacs-mac&lt;/code&gt; cannot use &lt;code&gt;emacsclient&lt;/code&gt; to open one gui Emacs frame.
+&lt;a class="link" href="https://github.com/railwaycat/homebrew-emacsmacport/issues/381" target="_blank" rel="noopener"
+&gt;https://github.com/railwaycat/homebrew-emacsmacport/issues/381&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="buffer"&gt;Buffer
+&lt;/h3&gt;&lt;p&gt;Use &lt;code&gt;C-x C-b&lt;/code&gt; to skim your buffers. Now you can use &lt;code&gt;d&lt;/code&gt; to mark the buffers you wanna remove, and press &lt;code&gt;x&lt;/code&gt; to execute the order you want.&lt;/p&gt;
+&lt;h3 id="dired"&gt;Dired
+&lt;/h3&gt;&lt;p&gt;Basic methods:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;m: &lt;code&gt;dired-mark&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;u: &lt;code&gt;dired-unmark&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;!: &lt;code&gt;dired-do-shell-command&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;+: &lt;code&gt;dired-create-directory&lt;/code&gt;, make a new directory.&lt;/li&gt;
+&lt;li&gt;.: &lt;code&gt;dired-clean-directory&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;C: &lt;code&gt;dired-do-copy&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;D: &lt;code&gt;dired-do-delete&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;M: &lt;code&gt;dired-do-chmod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;R: &lt;code&gt;dired-do-rename&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;U: &lt;code&gt;dired-unmark-all-marks&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Z: &lt;code&gt;dired-do-compress&lt;/code&gt;, which only compress current file and is useless.&lt;/li&gt;
+&lt;li&gt;c: &lt;code&gt;dired-do-compress-to&lt;/code&gt;, which can choose mark files and the compressed file format.&lt;/li&gt;
+&lt;li&gt;v: &lt;code&gt;dired-view-file&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;g: &lt;code&gt;revert-buffer&lt;/code&gt;&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="gnus"&gt;Gnus
+&lt;/h3&gt;&lt;p&gt;Three parts: Group buffer, Summary buffer, Article buffer.&lt;/p&gt;
+&lt;p&gt;Useful key bindings:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;B m&lt;/code&gt;: Move the article from one mail group to another (to delete)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;M-s&lt;/code&gt;: Search through all subsequent articles for a regexp in Summary buffer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;G G&lt;/code&gt;: Search in Group Buffer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;S r&lt;/code&gt;: Mail a reply to the author of the current article&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="window"&gt;Window
+&lt;/h3&gt;&lt;p&gt;使用 Mac 上的 Emacs 时最好不要把窗口最小化，不然可能会无响应。&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;C-x 5 0&lt;/code&gt; 关闭 isolated window (frame).&lt;/p&gt;
+&lt;h3 id="key-binding"&gt;Key Binding
+&lt;/h3&gt;&lt;p&gt;use-package/bind-key (prior):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-elisp" data-lang="elisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;bind-key*&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;C-x u&amp;#34;&lt;/span&gt; &lt;span class="nf"&gt;#&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;hydra-undo-tree/body&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;代码整体左（右）移: &lt;code&gt;C-x TAB&lt;/code&gt; 后接 &amp;lt;- -&amp;gt;.&lt;/p&gt;
+&lt;p&gt;对应括号跳转: &lt;code&gt;C-M-f&lt;/code&gt; and &lt;code&gt;C-M-b&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="profiler"&gt;Profiler
+&lt;/h3&gt;&lt;p&gt;Use &lt;code&gt;profiler-start&lt;/code&gt; to monitor your functions and programs in cpu or mem.&lt;/p&gt;
+&lt;p&gt;Use &lt;code&gt;profiler-report&lt;/code&gt; to check it, so you can find which one leads to the halt of Emacs.&lt;/p&gt;
+&lt;p&gt;Do not forget to close this, or you have to force your Emacs to exit.&lt;/p&gt;
+&lt;h3 id="subword"&gt;Subword
+&lt;/h3&gt;&lt;p&gt;Activate &lt;code&gt;subword-mode&lt;/code&gt; to deal with camel words better in codes.&lt;/p&gt;
+&lt;h3 id="text-scale"&gt;Text Scale
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-x C-+&lt;/code&gt;: increase the font size.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-x C--&lt;/code&gt;: decrease the font size.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="record-position"&gt;Record Position
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-spc C-spc&lt;/code&gt;: mark the position.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-u C-spc&lt;/code&gt;: return the marked position.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;remember-init&lt;/code&gt; and &lt;code&gt;remember-jump&lt;/code&gt; function.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="thoughts"&gt;Thoughts
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;&amp;lt;2024-10-18 Fri&amp;gt; &lt;/span&gt;&lt;/span&gt; Restart Emacs when changing displayer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="elisp"&gt;Elisp
+&lt;/h2&gt;&lt;h3 id="quote"&gt;Quote
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;'(x y)&lt;/code&gt; = &lt;code&gt;(quote (x y))&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="backquote"&gt;Backquote
+&lt;/h3&gt;&lt;p&gt;Backquote constructs allow you to quote a list, but selectively evaluate elements of that list if you use &lt;code&gt;,&lt;/code&gt; inside.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="nf"&gt;list&lt;/span&gt; &lt;span class="nv"&gt;of&lt;/span&gt; &lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;elements&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="cite"&gt;Cite
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;'&lt;/code&gt;: ordinary cite&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;#'&lt;/code&gt;: functional cite&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;#'foo&lt;/code&gt; is the same as &lt;code&gt;(function foo)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="hook"&gt;Hook
+&lt;/h3&gt;&lt;p&gt;You should add a mode to a hook, not a mode-hook to a hook.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;prog-mode-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;outli-mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; like this&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="let"&gt;Let
+&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;let&lt;/code&gt; creates a name for a &lt;em&gt;local variable&lt;/em&gt; that overshadows any use of the same name outside the &lt;code&gt;let&lt;/code&gt; expression (in computer science jargon, we call this &lt;em&gt;binding&lt;/em&gt; the variable).&lt;sup id="fnref:2"&gt;&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;zebra&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;stripes&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;tiger&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;fierce&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;One kind of animal has %s and another is %s.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nv"&gt;zebra&lt;/span&gt; &lt;span class="nv"&gt;tiger&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Combine &lt;code&gt;let&lt;/code&gt; and &lt;code&gt;if&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;let*&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; Use let* to assure y know x in let*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;y&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="mi"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;x is: %d, y is: %d&amp;#34;&lt;/span&gt; &lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="nv"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;;; d-&amp;gt;value, s-&amp;gt;string&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="formatting-strings"&gt;Formatting Strings
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;%s&lt;/code&gt;: string&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%c&lt;/code&gt;: char&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%f&lt;/code&gt;: decimal-point notation for a float&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%e&lt;/code&gt;: exponential notation for a float&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%d&lt;/code&gt;: decimal value&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%x&lt;/code&gt;: hex value&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%o&lt;/code&gt;: octal value&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--listend--&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;let&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;Alice&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;message&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;%s has number %d&amp;#34;&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="nv"&gt;x&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id="latex"&gt;LaTeX
+&lt;/h2&gt;&lt;h3 id="cdlatex"&gt;CDLaTeX
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;lbl + TAB&lt;/code&gt;: insert label automatically.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ref + TAB&lt;/code&gt;: reference label automatically.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="reftex"&gt;RefTeX
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;reftex-parse-one&lt;/code&gt;: update label list (environment number).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reftex-label&lt;/code&gt; &lt;code&gt;C-c (&lt;/code&gt; : insert label.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reftex-reference&lt;/code&gt; &lt;code&gt;C-c )&lt;/code&gt; : reference label.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reftex-citation&lt;/code&gt; &lt;code&gt;C-c [&lt;/code&gt; : cite.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reftex-toc&lt;/code&gt; &lt;code&gt;C-c =&lt;/code&gt; : show toc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="org"&gt;Org
+&lt;/h2&gt;&lt;h3 id="output"&gt;Output
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;docx: use &lt;code&gt;#+pandoc_options: reference-doc:./templates/templates.docx&lt;/code&gt;. Confirm you have installed &lt;code&gt;pandoc&lt;/code&gt; and prepared the template.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="org-roam"&gt;Org Roam
+&lt;/h3&gt;&lt;h3 id="beamer"&gt;Beamer
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;org-beamer-select-environment&lt;/code&gt;: &lt;code&gt;C-c C-b&lt;/code&gt;. You must turn on &lt;code&gt;org-beamer-mode&lt;/code&gt; to use this.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="babel"&gt;Babel
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-c '&lt;/code&gt;: to code to avoid indentation questions.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-c C-v b&lt;/code&gt;: &lt;code&gt;org-babel-execute-buffer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-c C-v s&lt;/code&gt;: &lt;code&gt;org-babel-execute-subtree&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="graphviz"&gt;Graphviz
+&lt;/h4&gt;&lt;p&gt;An example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;digraph G {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; A -&amp;gt; B;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; B -&amp;gt; C;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; C -&amp;gt; A;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id="result"&gt;Result
+&lt;/h4&gt;&lt;p&gt;Each code block can take only one option per class:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Collection
+&lt;ul&gt;
+&lt;li&gt;value(default)&lt;/li&gt;
+&lt;li&gt;output&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Type: up to the result type, mostly exhibited in table.
+&lt;ul&gt;
+&lt;li&gt;table&lt;/li&gt;
+&lt;li&gt;vector&lt;/li&gt;
+&lt;li&gt;list&lt;/li&gt;
+&lt;li&gt;scalar&lt;/li&gt;
+&lt;li&gt;verbatim: If you don&amp;rsquo;t like the table format of an array, use this.&lt;/li&gt;
+&lt;li&gt;file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Format
+&lt;ul&gt;
+&lt;li&gt;raw&lt;/li&gt;
+&lt;li&gt;code&lt;/li&gt;
+&lt;li&gt;drawer: wrapped in a &amp;lsquo;RESULTS&amp;rsquo; drawer for later scripting and automated processing. Use &lt;code&gt;:wrap&lt;/code&gt; to determine the code type of drawer blocks.&lt;/li&gt;
+&lt;li&gt;html&lt;/li&gt;
+&lt;li&gt;latex&lt;/li&gt;
+&lt;li&gt;link&lt;/li&gt;
+&lt;li&gt;graphics&lt;/li&gt;
+&lt;li&gt;org&lt;/li&gt;
+&lt;li&gt;pp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Handling
+&lt;ul&gt;
+&lt;li&gt;replace&lt;/li&gt;
+&lt;li&gt;silent&lt;/li&gt;
+&lt;li&gt;none&lt;/li&gt;
+&lt;li&gt;discard&lt;/li&gt;
+&lt;li&gt;append&lt;/li&gt;
+&lt;li&gt;prepend&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Use &lt;code&gt;org-inline-pdf&lt;/code&gt; to display pdf images inline.&lt;/p&gt;
+&lt;h3 id="latex-preview"&gt;LaTeX Preview
+&lt;/h3&gt;&lt;p&gt;目前配置为一些 function + org-fragtog, 已经很好用了。&lt;/p&gt;
+&lt;p&gt;预计 org 9.7 有自动 preview.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C-u C-u C-c C-x C-l: display image for all fragments in the buffer.&lt;/li&gt;
+&lt;li&gt;C-u C-u C-u C-c C-x C-l: clear image for all in the buffer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;&amp;lt;2026-01-13 Tue&amp;gt;&lt;/span&gt;&lt;/span&gt;现在还没用上期待的 preview，不过 &lt;code&gt;org-xlatex&lt;/code&gt; 已经很好用了。&lt;/p&gt;
+&lt;h3 id="timestamps"&gt;TimeStamps
+&lt;/h3&gt;&lt;p&gt;My thought: only tasks need to be &lt;code&gt;scheduled&lt;/code&gt;, classes should not be &lt;code&gt;scheduled&lt;/code&gt;. Use &lt;code&gt;org-timestamp&lt;/code&gt; directly.&lt;/p&gt;
+&lt;p&gt;Key bindings:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DEADLINE: &lt;code&gt;C-c C-t&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SCHEDULED: &lt;code&gt;C-c C-s&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;org-timestamp: &lt;code&gt;C-c .&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;org-timestamp-inactive: &lt;code&gt;C-c !&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="packages"&gt;Packages
+&lt;/h3&gt;&lt;h4 id="org-zettel-ref"&gt;org-zettel-ref
+&lt;/h4&gt;&lt;p&gt;把 pdf 或一些电子书格式放到 &amp;lt;./org/zettel/tmp&amp;gt; 路径下可以转换为 org, 然后提供 org 格式下的笔记支持。&lt;/p&gt;
+&lt;p&gt;我认为不应该跟 org-roam 混合使用。org-roam 更应该是上课或独立思考的笔记，而非看书的旁注。&lt;/p&gt;
+&lt;p&gt;这个功能定位应该是替代 pdf-tools 和 org-noter.&lt;/p&gt;
+&lt;p&gt;注意它调用了自己写的脚本 &lt;code&gt;convert_to_pdf.py&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;试了一下，完全看不了我想看的书（textbook full of formulas）. 感觉完全不适合看公式和图多的书和论文，看看别的可能还行?&lt;sup id="fnref:3"&gt;&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Set 2 keys:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C-c z: &lt;code&gt;org-zettel-ref-add-quick-note&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;C-c 9: &lt;code&gt;org-zettel-ref-quick-markup&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Remember to init it, and use it to overview your notes of org.&lt;/p&gt;
+&lt;h4 id="org-roam"&gt;org-roam
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;org-roam&lt;/code&gt; 与 &lt;code&gt;org-noter&lt;/code&gt; 结合仅用于 paper reading. 读书应该使用 calibre, 或者就在当前文件夹使用 &lt;code&gt;org-noter&lt;/code&gt;, 或者干脆不链接, 使用 &lt;code&gt;org-roam&lt;/code&gt; 做笔记.&lt;/p&gt;
+&lt;p&gt;对于结合之后的情形, 应当将 cursor 移至有 &lt;code&gt;org-noter&lt;/code&gt; 链接的位置再使用 &lt;code&gt;org-noter&lt;/code&gt; 以找到对应的文件.&lt;/p&gt;
+&lt;p&gt;&lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;&amp;lt;2026-01-13 Tue&amp;gt;&lt;/span&gt;&lt;/span&gt;目前完全作为笔记功能使用，阅读文献还是用 zotero 为好.&lt;/p&gt;
+&lt;h2 id="lsp--code"&gt;Lsp (Code)
+&lt;/h2&gt;&lt;h3 id="quickrun"&gt;Quickrun
+&lt;/h3&gt;&lt;p&gt;Set &lt;code&gt;(:tempfile . nil)&lt;/code&gt; to not create tempfiles.&lt;/p&gt;
+&lt;h3 id="exec-path-from-shell"&gt;Exec-path-from-shell
+&lt;/h3&gt;&lt;p&gt;保证 pyright 补全正确的关键是让 Emacs 发现正确的 conda 环境, 需要用 exec-path-from-shell 导入 .zshrc 中的对应部分.&lt;/p&gt;
+&lt;p&gt;pyright 和 ruff 这些 lsp 的对应版本和安装时的 python 版本与补全无关.&lt;/p&gt;
+&lt;h3 id="eglot"&gt;EGLOT
+&lt;/h3&gt;&lt;h3 id="lsp-bridge"&gt;LSP-bridge
+&lt;/h3&gt;&lt;p&gt;为 c++ 项目提供补全时，通过在项目的根目录 &lt;code&gt;git init&lt;/code&gt; 来判定项目区域。&lt;/p&gt;
+&lt;p&gt;由此可确认项目根目录的 &lt;code&gt;compile_command.json&lt;/code&gt; 和 &lt;code&gt;.clangd&lt;/code&gt; 文件。&lt;/p&gt;
+&lt;p&gt;可以使用 bear 或直接使用 cmake 生成 &lt;code&gt;compile_command.json&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="lsp-mode"&gt;LSP Mode
+&lt;/h3&gt;&lt;h4 id="python"&gt;Python
+&lt;/h4&gt;&lt;p&gt;Use &lt;code&gt;lsp-pyright&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id="org"&gt;Org
+&lt;/h4&gt;&lt;p&gt;Not a good idea to use this for literate programming.&lt;/p&gt;
+&lt;h3 id="dap-mode"&gt;DAP Mode
+&lt;/h3&gt;&lt;h4 id="c"&gt;C
+&lt;/h4&gt;&lt;p&gt;Use &lt;code&gt;lldb-mi&lt;/code&gt; in the &lt;code&gt;.vscode&lt;/code&gt; path to debug.&lt;/p&gt;
+&lt;p&gt;You need to &lt;code&gt;(require dap-gdb-lldb)&lt;/code&gt; first and run &lt;code&gt;dap-gdb-lldb-setup&lt;/code&gt;. Then find the path of &lt;code&gt;lldb-mi&lt;/code&gt; and use &lt;code&gt;ln -s&lt;/code&gt; to create a symbolic link in &lt;code&gt;/usr/local/bin&lt;/code&gt; (or other PATHs).&lt;/p&gt;
+&lt;h4 id="python"&gt;Python
+&lt;/h4&gt;&lt;p&gt;Just &lt;code&gt;(require 'dap-python)&lt;/code&gt; and use &lt;code&gt;pip install debugpy&lt;/code&gt; and &lt;code&gt;(setq dap-python-debugger 'debugpy)&lt;/code&gt;. Much easier than C!&lt;/p&gt;
+&lt;h2 id="shell"&gt;Shell
+&lt;/h2&gt;&lt;h3 id="exec-path-from-shell"&gt;Exec-path-from-shell
+&lt;/h3&gt;&lt;p&gt;You should confirm the shell where Emacs start to get appropriate environment variables.&lt;/p&gt;
+&lt;h2 id="packages"&gt;Packages
+&lt;/h2&gt;&lt;h3 id="use-package"&gt;Use-package
+&lt;/h3&gt;&lt;p&gt;Emacs 原生 package 的某个特性用不了，可能是 elpa 路径下有同一个旧版本的 package 覆盖了。&lt;/p&gt;
+&lt;p&gt;现在 (Emacs 30) 可以用 vc 进行版本控制（git, svn），例如:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;use-package&lt;/span&gt; &lt;span class="nv"&gt;outli&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;:vc&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;:url&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;https://github.com/jdtsmith/outli&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;:rev&lt;/span&gt; &lt;span class="nv"&gt;newest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;:hook&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;prog-mode&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;outli-mode&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="magit"&gt;Magit
+&lt;/h3&gt;&lt;p&gt;YYDS.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;P: push. Config to change push target.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="calibre"&gt;Calibre
+&lt;/h3&gt;&lt;p&gt;I prefer local calibre.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;You can also choose typing &lt;code&gt;cps&lt;/code&gt; to start calibre-web in the virtual environment &lt;code&gt;calibre&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Open your browser and navigate to &lt;a class="link" href="http://localhost:8083" target="_blank" rel="noopener"
+&gt;http://localhost:8083&lt;/a&gt; for the OPDS catalog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="dashboard"&gt;Dashboard
+&lt;/h3&gt;&lt;p&gt;Dashboard 的 link 类型为 &lt;code&gt;widget-button&lt;/code&gt;. 可以通过这个 customize face.&lt;/p&gt;
+&lt;h3 id="elfeed"&gt;Elfeed
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;-: &lt;code&gt;elfeed-search-untag-all-unread&lt;/code&gt;, remove &lt;strong&gt;unread&lt;/strong&gt; tag from all selected regions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="rime"&gt;Rime
+&lt;/h3&gt;&lt;h4 id="install-and-settings"&gt;Install and settings
+&lt;/h4&gt;&lt;p&gt;首先需要安装并配置鼠须管：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install --cask squirrel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;配置方式可以参考&lt;a class="link" href="https://rime.im/docs/" target="_blank" rel="noopener"
+&gt;帮助文档&lt;/a&gt;, 我直接使用了雾凇拼音的&lt;a class="link" href="https://github.com/Mark24Code/rime-auto-deploy" target="_blank" rel="noopener"
+&gt;安装脚本&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;为了在 Emacs 上使用 Rime，需要下载编译好的 librime：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -L -O https://github.com/rime/librime/releases/download/1.7.1/rime-1.7.1-osx.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;unzip rime-1.7.1-osx.zip -d ~/.emacs.d/librime
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm -rf rime-1.7.1-osx.zip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;下面需要在 Emacs 上安装 rime. 我的配置如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-elisp" data-lang="elisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;use-package&lt;/span&gt; &lt;span class="nv"&gt;rime&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;:custom&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;default-input-method&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;rime&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;rime-librime-root&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;~/.emacs.d/librime/dist&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; librime path&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;rime-emacs-module-header-root&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;/opt/homebrew/cellar/emacs/29.4_1/include&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; emacs include path&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;rime-user-data-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;~/Library/Rime/&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;rime-cursor&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;.&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;rime-show-candidate&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;posframe&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;rime-commit1-forall&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;rime-posframe-properties&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;list&lt;/span&gt; &lt;span class="nb"&gt;:internal-border-width&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;;; Show icon on modeline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;mode-line-mule-info&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nb"&gt;:eval&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;rime-lighter&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;;; Deactivate rime when and after using minibuffer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;rime-deactivate-when-exit-minibuffer&lt;/span&gt; &lt;span class="no"&gt;t&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;需要注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;rime-librime-root&lt;/code&gt;: &lt;code&gt;librime/dist&lt;/code&gt; 位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;rime-emacs-module-header-root&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;使用 brew 安装的 Emacs 位置与系统默认位置不一致，需要指定其头文件位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;rime-user-data-dir&lt;/code&gt;: rime 配置位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;rime-show-candidate&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;选择输入法显示方式，我使用 posframe.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;rime-commit1-forall&lt;/code&gt;: 在输入处显示首个备选项。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="punctuator"&gt;Punctuator
+&lt;/h4&gt;&lt;p&gt;全部使用英文标点, 需要直接更改对应输入方案的 yaml 文件.&lt;sup id="fnref:4"&gt;&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;switches&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;ascii_punct&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;reset&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;states&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;¥&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;$&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="yasnippet"&gt;Yasnippet
+&lt;/h3&gt;&lt;p&gt;Never update your snippets.&lt;/p&gt;
+&lt;h3 id="helm-bibtex"&gt;Helm-bibtex
+&lt;/h3&gt;&lt;p&gt;Cannot Zotero export BibTeX? Use helm-bibtex:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;F4&lt;/code&gt;: Insert reference content, useful to beamer slide footnotes.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;F5&lt;/code&gt;: Insert bib key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;F6&lt;/code&gt;: Insert bib content&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="atomic-chrome"&gt;Atomic Chrome
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;atomic-chrome-start-server&lt;/code&gt; and start &lt;code&gt;GhostText&lt;/code&gt; of chrome.&lt;/p&gt;
+&lt;h2 id="ui"&gt;UI
+&lt;/h2&gt;&lt;h3 id="themes"&gt;Themes
+&lt;/h3&gt;&lt;p&gt;Now I am using moe theme, forked and modified by myself though.&lt;/p&gt;
+&lt;h4 id="light"&gt;Light
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;leuven&lt;/code&gt;: blue&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;spacemacs-light&lt;/code&gt;: purple&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;modus-operandi-deuteranopia&lt;/code&gt;: blue purple&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;moe-light&lt;/code&gt;: vivid&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;flatui&lt;/code&gt;: pure green&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;catppuccin&lt;/code&gt;: coffee frappe&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;doric&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="dark"&gt;Dark
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;leuven-dark&lt;/code&gt;: blue&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;doom-outrun-electric&lt;/code&gt;: gloomy&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;doom-shades-of-purple&lt;/code&gt;: purple&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sanityinc-tomorrow-blue&lt;/code&gt;: blue&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;modus-vivendi-deuteranopia&lt;/code&gt;: blue purple&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;catppuccin&lt;/code&gt;: coffee
+frappe, latte, macchiato, or mocha&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;timu-macos&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;timu-caribbean&lt;/code&gt;: cyan/coral&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="minibuffer"&gt;Minibuffer
+&lt;/h3&gt;&lt;h4 id="embark"&gt;Embark
+&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-elisp" data-lang="elisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;use-package&lt;/span&gt; &lt;span class="nv"&gt;embark&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;:bind&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;C-.&amp;#34;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;embark-act&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Good reference: &lt;a class="link" href="https://karthinks.com/software/fifteen-ways-to-use-embark/" target="_blank" rel="noopener"
+&gt;Fifteen ways to use embark&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="highlight-indent-guides"&gt;Highlight-indent-guides
+&lt;/h3&gt;&lt;p&gt;Don&amp;rsquo;t use character, which leads to indent mistakes.&lt;/p&gt;
+&lt;p&gt;Now use &lt;code&gt;indent-bars&lt;/code&gt; instead.&lt;/p&gt;
+&lt;div class="footnotes" role="doc-endnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;Which can be used to refresh org agenda, too.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;When using &lt;code&gt;setq&lt;/code&gt; in &lt;code&gt;let&lt;/code&gt;, it&amp;rsquo;s a locally modification.&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;不是很实用, 还是集中在对 org 做笔记和整理笔记上比较好.&amp;#160;&lt;a href="#fnref:3" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:4"&gt;
+&lt;p&gt;rime-ice.schema.yaml in .emacs.d/rime works for me.&amp;#160;&lt;a href="#fnref:4" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description></item><item><title>Notes of Geant4</title><link>https://grant-s-z.github.io/Grant/p/notes-of-geant4/</link><pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/notes-of-geant4/</guid><description>&lt;h2 id="toolkit-fundamentals"&gt;Toolkit Fundamentals
+&lt;/h2&gt;&lt;h3 id="global-usage-classes"&gt;Global Usage Classes
+&lt;/h3&gt;&lt;h4 id="signature"&gt;Signature
+&lt;/h4&gt;&lt;p&gt;为了使用统一的命名方式，遵循 Geant4 的一些约定，Geant4 内核的每一个类的名字都以前缀 G4 开头。为了便于移植，在 Geant4 中使用 G4 类型(G4int, G4float, G4double 等)代替 C 中原有的类型(int, float, double 等)。&lt;/p&gt;
+&lt;p&gt;基本类型：G4int, G4long, G4float, G4double, G4bool, G4complex, G4String.&lt;/p&gt;
+&lt;p&gt;多数基本类型定义包含了头文件 globals.hh.&lt;/p&gt;
+&lt;h3 id="system-of-units"&gt;System of Units
+&lt;/h3&gt;&lt;h4 id="input"&gt;Input
+&lt;/h4&gt;&lt;p&gt;必须对引入数据指定单位：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;Size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;km&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;density&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;mg&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;cm3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;对于交互式命令，要求：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/gun/energy 15.2 keV
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/gun/position 3 2 -7 meter
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id="output"&gt;Output
+&lt;/h4&gt;&lt;p&gt;可以使用喜欢的单位输出数据，只要将这些数据除以相应的单位：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4cout&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KineticEnergy&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;keV&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="s"&gt;&amp;#34; keV&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;也可以让 Geant4 来选择使用最合适的单位来输出数据，只要指定用户数据的类别(属于 Length, Time, Energy 等)，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4cout&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;G4BestUnit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SetpSize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;Length&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="run"&gt;Run
+&lt;/h3&gt;&lt;h4 id="basic-concept"&gt;Basic Concept
+&lt;/h4&gt;&lt;p&gt;在 Geant4 中，Run 是一个最大的模拟单位，一个 run 由一系列的事件组成，它是 G4Run 的 一个对象，由 G4RunManager 的方法 beamOn() 启动。在一个 run 过程中，探测器几何，灵敏 探测器设置，和模拟中所使用的物理过程，都保持不变。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;G4RunManager&lt;/strong&gt; 管理一个 run 的相关进程。其公用方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;initialize()&lt;/p&gt;
+&lt;p&gt;Geant4 内核必须的所有初始化由该方法触发，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;探测器几何&lt;/li&gt;
+&lt;li&gt;粒子和物理过程&lt;/li&gt;
+&lt;li&gt;反应截面等计算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;该方法必须在首个 run 执行之前调用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;beamOn(G4int numberOfEvent)&lt;/p&gt;
+&lt;p&gt;触发一个实际的模拟过程。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;G4UserRunAction&lt;/strong&gt; 是一个用户行为类。其虚拟方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;beginOfRunAction()&lt;/p&gt;
+&lt;p&gt;在 beamOn() 开始时被调用，常用情形：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置一个 run 标识数&lt;/li&gt;
+&lt;li&gt;登记一个统计图&lt;/li&gt;
+&lt;li&gt;设置探测器运行条件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;endOfRunAction()&lt;/p&gt;
+&lt;p&gt;在 beamOn() 结束时被调用，常用情形：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储/输出统计图&lt;/li&gt;
+&lt;li&gt;操作 run 摘要&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="event"&gt;Event
+&lt;/h3&gt;&lt;p&gt;G4Event 代表一个事件，它是一个包含所有被模拟事件的输入输出信息的类的实例。这个对 象在 G4RunManager 中被创建并传递给 G4EventManager。可以通过 G4RunManager 的方法 getCurrentEvent() 获取当前正在处理的事件指针。&lt;/p&gt;
+&lt;h2 id="detector-definition-and-response"&gt;Detector Definition and Response
+&lt;/h2&gt;&lt;h3 id="geometry"&gt;Geometry
+&lt;/h3&gt;&lt;h4 id="solid-volume"&gt;Solid Volume
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Box&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4Box&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;G4String&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;pName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pZ&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Tube&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4Tubs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;G4String&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;pName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pRMin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pRMax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pDz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pSPhi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pDPhi&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Full Solid Sphere&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4Orb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;G4String&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;pName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pRmax&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id="logical-volume"&gt;Logical Volume
+&lt;/h4&gt;&lt;p&gt;逻辑体管理那些与给定实体和材料的探测器单元有关的信息，与它们在探测器中的物理位置无关。&lt;/p&gt;
+&lt;h4 id="physical-volume"&gt;Physical Volume
+&lt;/h4&gt;&lt;p&gt;物理体指明了那些描述探测器单元的 volumes 的空间位置。&lt;/p&gt;
+&lt;h3 id="material"&gt;Material
+&lt;/h3&gt;&lt;h3 id="electromagnetic-field"&gt;Electromagnetic Field
+&lt;/h3&gt;&lt;h3 id="hits"&gt;Hits
+&lt;/h3&gt;&lt;h2 id="tracking-and-physics"&gt;Tracking and Physics
+&lt;/h2&gt;&lt;h3 id="tracking"&gt;Tracking
+&lt;/h3&gt;&lt;h3 id="physics-processes"&gt;Physics Processes
+&lt;/h3&gt;&lt;p&gt;物理过程描述粒子是怎样和物质发生相互作用的。&lt;/p&gt;
+&lt;p&gt;每个物理过程都有两组方法，GetPhysicalInteractionLength (GPIL) 和 DoIt，它们在粒子跟踪中扮演重要角色。GPIL 方法给出从当前时空位置到下个时空位置的步长，它根据物理过程的反应截面信息来计算发生反应的概率。在 step 的结尾调用 DoIt 方法。DoIt 方法实现了这个反应的细节，改变粒子的能量、动量、方向和位置，还产生次级粒子（如需要）。&lt;/p&gt;
+&lt;h3 id="particles"&gt;Particles
+&lt;/h3&gt;&lt;p&gt;G4ParticleDefinition 集中了反应一个粒子属性的信息，如名称，质量，自旋，寿命和衰变模式。&lt;/p&gt;
+&lt;h3 id="production-threshold-versus-tracking-cut"&gt;Production Threshold versus Tracking Cut
+&lt;/h3&gt;&lt;h3 id="cuts-per-region"&gt;Cuts per Region
+&lt;/h3&gt;&lt;h2 id="user-actions"&gt;User Actions
+&lt;/h2&gt;&lt;h3 id="mandatory-user-actions-and-initializations"&gt;Mandatory User Actions and Initializations
+&lt;/h3&gt;&lt;p&gt;Geant4 有三个虚类，用户为了实现模拟必须重载它们的方法。它们要求用户定义探测器，指定将要使用的物理过程，并且描述如何初始化将要产生的粒子。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;G4VUserDetectorConstruction&lt;/li&gt;
+&lt;li&gt;G4VUserPhysicsList&lt;/li&gt;
+&lt;li&gt;G4VUserPrimaryGeneratorAction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="optional-user-actions"&gt;Optional User Actions
+&lt;/h3&gt;&lt;p&gt;有 5 个虚类，用于增强在不同阶段对模拟的控制，用户必须重载这些类的方法。每个 action 类的每个方法都有一个空的缺省实现，允许用户继承并实现期望的类和方法。用户 action 类的对象，必须向 G4RunManager 注册。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;G4UserRunAction&lt;/li&gt;
+&lt;li&gt;G4UserEventAction&lt;/li&gt;
+&lt;li&gt;G4UserStackingAction&lt;/li&gt;
+&lt;li&gt;G4UserTrackingAction&lt;/li&gt;
+&lt;li&gt;G4UserSteppingAction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="control"&gt;Control
+&lt;/h2&gt;</description></item><item><title>托尔斯泰 片段与感想</title><link>https://grant-s-z.github.io/Grant/p/%E6%89%98%E5%B0%94%E6%96%AF%E6%B3%B0-%E7%89%87%E6%AE%B5%E4%B8%8E%E6%84%9F%E6%83%B3/</link><pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/%E6%89%98%E5%B0%94%E6%96%AF%E6%B3%B0-%E7%89%87%E6%AE%B5%E4%B8%8E%E6%84%9F%E6%83%B3/</guid><description>&lt;h2 id="安娜-卡列尼娜"&gt;安娜·卡列尼娜
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;&amp;lt;2024-11-17 Sun&amp;gt; &lt;/span&gt;&lt;/span&gt; 完全避免脸谱化, 扁平化的一部小说. 每个人都有血有肉, 都有值得共情的点, 也都有可恨之处, 这是真正的现实主义.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;&amp;lt;2024-11-19 Tue&amp;gt; &lt;/span&gt;&lt;/span&gt; 不同视角带来的差异是巨大的（安娜与卡列宁，列文与柯兹尼雪夫）。&lt;/p&gt;
+&lt;p&gt;婚姻是爱情的坟墓还是延伸？选择婚姻，意味着牺牲一部分爱情去换取责任吗？安娜选择爱情，是不是抛弃了她在婚姻中的责任呢？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;&amp;lt;2024-11-23 Sat&amp;gt; &lt;/span&gt;&lt;/span&gt; 人总要有有意义的事去做, 才能找到活着的意义. 生活中只有爱情, 是飞蛾扑火; 生活中有爱情, 也有与爱情一样崇高的事业, 是列文.&lt;/p&gt;
+&lt;p&gt;安娜和列文性格相近, 为何历程相背, 结局迥异? 我想这个问题是托尔斯泰想探讨的核心.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-dot-9-列文和吉娣在动物园溜冰-列文和奥博朗斯基去饭店午餐"&gt;1.9 列文和吉娣在动物园溜冰/列文和奥博朗斯基去饭店午餐
+&lt;/h3&gt;&lt;p&gt;就像从荨麻丛中找出玫瑰花一样。一切都因她而生辉。她是照亮周围一切的微笑。&lt;/p&gt;
+&lt;p&gt;他走了过去，像对着太阳似的不敢朝她多望，但也像对着太阳一般，即使不去望她，还是看得见她。&lt;/p&gt;
+&lt;h3 id="1-dot-13-列文向吉娣求婚遭到拒绝"&gt;1.13 列文向吉娣求婚遭到拒绝
+&lt;/h3&gt;&lt;p&gt;她一想到将来同伏伦斯基在一起，她的面前就出现了一片光辉灿烂的前景；同列文在一起，却觉得面前是一片迷雾。&lt;/p&gt;
+&lt;h3 id="1-dot-17-伏伦斯基和奥勃朗斯基在莫斯科车站等候伏伦斯基伯爵夫人和安娜-卡列尼娜"&gt;1.17 伏伦斯基和奥勃朗斯基在莫斯科车站等候伏伦斯基伯爵夫人和安娜·卡列尼娜
+&lt;/h3&gt;&lt;p&gt;奥勃朗斯基别有含意地笑着说下去，完全忘记他昨天是那么真心实意地同情列文。今天他虽然又产生同样的感情，但那是对伏伦斯基的.&lt;/p&gt;
+&lt;p&gt;真的，机车已在远处鸣笛了。不多一会儿，站台震动起来，火车喷出的蒸汽在严寒的空气中低低地散开，中轮的杠杆缓慢而有节奏地一上一下移动着。从头到脚穿得很暖和的司机，身上盖满霜花，弯着腰把机车开过来。接着是煤水车，煤水车之后是行李车，行李车里有一条狗在汪汪乱叫。火车开得越来越慢，站台震动得越来越厉害。最后，客车进站了，车厢抖动了一下，停了下来。&lt;/p&gt;
+&lt;h3 id="1-dot-29-安娜在火车上-阅读英国小说-一个梦"&gt;1.29 安娜在火车上/阅读英国小说/一个梦
+&lt;/h3&gt;&lt;p&gt;她轻蔑地冷笑了一声，又拿起书来，可是怎么也读不进去。她拿裁纸刀在窗玻璃上刮了一下，又把光滑冰凉的刀面贴在面颊上，一种莫名其妙的喜悦突然涌上心头，她差一点笑出声来。她觉得她的神经像琴弦一样在弦轴上越绷越紧。她觉得她的眼睛睁得越来越大，手指和脚趾都在痉挛，喉咙里有样东西哽住，喘不过气来；而在这摇曳的昏暗灯光里，一切形象却异乎寻常地鲜明，使她感到惊奇。&lt;/p&gt;
+&lt;p&gt;对这样的精神恍惚，她感到恐惧。它有一种吸引力，但她可以凭意志听从它或者摆脱它。&lt;/p&gt;
+&lt;p&gt;这个腰身很长的乡下佬仿佛在啃墙上的什么东西，那个老太婆把腿伸得有一车厢长，弄得车厢里一片阴暗；接着听到一阵恐怖的尖叫和轰隆声，仿佛有人被撕裂了；然后是一片耀眼的通红的火光，最后一切又全被一堵墙遮住了。安娜觉得她在往下沉，但这一切并不可怕，而是怪有趣的。&lt;/p&gt;
+&lt;p&gt;暴风雪向她迎面扑来，同她争夺着车门。她觉得很有趣。她拉开门，走了出去。风仿佛就在等着她，快乐地呼啸着，想把她擒住带走，但她抓住冰冷的门柱，按住衣服，走到站台上，离开那节车厢。风在踏级上很猛烈，但在站台上被车厢挡住，变得轻微些了。她舒畅地深深吸着雪花飞舞的凛冽的空气，站在车厢旁边，环顾着站台和灯光辉煌的车站。&lt;/p&gt;
+&lt;h3 id="1-dot-30-途中遇见伏伦斯基-安娜抵达彼得堡-在车站上遇见丈夫"&gt;1.30 途中遇见伏伦斯基/安娜抵达彼得堡/在车站上遇见丈夫
+&lt;/h3&gt;&lt;p&gt;这几天，甚至刚才，她还在反复对自己说，对于她，伏伦斯基只不过是随处可以遇见的无数普通青年中的一个罢了，她绝不让自己再去想他；可是这会儿，刚同他见面，她就被一种快乐的骄傲情绪所控制。她不必问他怎么会来到这里。这一点她知道得那么确切，就像他对她说：他来到这里，是因为她在这里。&lt;/p&gt;
+&lt;p&gt;“我来做什么吗？”他盯住她的眼睛，反问说，“说实话，我来到这里，是因为您在这里，”他说，“我没有别的办法。”&lt;/p&gt;
+&lt;p&gt;就在这个时候，风仿佛冲破了重重障碍，把车厢顶上的雪吹落下来，把什么地方的破铁皮吹得铿锵发响。前面，机车发出哀怨而凄凉的尖锐汽笛声。暴风雪的恐怖景象在她看来显得格外壮丽。他对她说的话，正是她内心所渴望而她的理智所害怕的。她什么也没有回答，但他从她的脸上看出了内心的斗争。&lt;/p&gt;
+&lt;p&gt;她在这小小的平台上站住，头脑里重温着刚才发生的事。她想不起自己说过的话，也想不起他说过的话，但她明白，这片刻的谈话使他们可怕地接近了。这使她感到害怕，也使她觉得幸福。&lt;/p&gt;
+&lt;p&gt;“哎呀，我的天！他的耳朵怎么变成这个样子了？”她望着他那冷冰冰的、一本正经的脸，特别是他那对现在使她感到惊奇的、撑住圆礼帽边缘的大耳朵，心里想。他一看见她，就向她走过来，嘴唇上浮起他那惯常的嘲笑，他那双疲倦的大眼睛直瞪着她。当她遇见他那执拗而疲倦的目光时，一阵不愉快的感觉揪住她的心，仿佛她原来希望看见的他不是这个样子的。特别使她吃惊的，是当她遇见他时所产生的那种对自己不满的感觉。这是一种由来已久的熟悉的感觉，也就是在对待丈夫关系上的虚情假意。她以前没有注意到这种感情，现在却十分明白而痛苦地意识到了。&lt;/p&gt;
+&lt;h3 id="1-dot-32-安娜回到家里-见到儿子谢辽查-李迪雅伯爵夫人和安娜另一女友的来访-安娜的心情"&gt;1.32 安娜回到家里，见到儿子谢辽查/李迪雅伯爵夫人和安娜另一女友的来访/安娜的心情
+&lt;/h3&gt;&lt;p&gt;她在旅途中所感到的莫名其妙的羞愧和兴奋完全消失了。在习惯的生活环境中，她又觉得心安理得，无可非难。&lt;/p&gt;
+&lt;p&gt;她想起她曾经告诉丈夫，在彼得堡，她丈夫手下有个青年差点儿向她求爱，但卡列宁却回答说，这类事情凡是参加社交活动的女人都会碰到，他完全相信她的稳重，绝不会让猜疑来贬低她和贬低自己。&lt;/p&gt;
+&lt;h3 id="2-dot-23-伏伦斯基从当前处境中找出路"&gt;2.23 伏伦斯基从当前处境中找出路
+&lt;/h3&gt;&lt;p&gt;她一面说，一面仔细想着卡列宁的外貌、说话的姿势和他的性格，把他身上能找到的缺点全部集中起来，并不因为自己对他犯了大罪而稍稍原谅他。&lt;/p&gt;
+&lt;p&gt;“我不幸吗？​”她挨近他，带着火热的爱恋的微笑瞧着他，说，​“我好像一个饥饿的人得到了食物。他也许感到寒冷，他的衣服被撕破了，他感到害臊，但他并不是不幸。我不幸吗？不，这正好是我的幸福哇……”&lt;/p&gt;
+&lt;h3 id="2-dot-28-卡列宁在赛马场上-安娜的心情"&gt;2.28 卡列宁在赛马场上/安娜的心情
+&lt;/h3&gt;&lt;p&gt;​“沽名钓誉，飞黄腾达——这就是他灵魂里的全部货色，​”她想，​“至于高尚的思想啦、热爱教育啦、笃信宗教啦，这一切无非都是他往上爬的敲门砖罢了。​”&lt;/p&gt;
+&lt;p&gt;她不了解卡列宁今天这样异乎寻常地饶舌，弄得她恼恨，完全是他内心烦恼和不安的反应。正像一个受伤的孩子拼命以蹦蹦跳跳来减轻疼痛那样，卡列宁需要用其他脑力活动来排除有关妻子的思想。&lt;/p&gt;
+&lt;p&gt;安娜脸色苍白而严厉。除了一个人以外，她显然什么也没有看见，谁也没有看见。她的手痉挛地紧握着扇子，她屏住呼吸。卡列宁对她望了望，连忙扭过身去，望望别人。&lt;/p&gt;
+&lt;p&gt;他想不去看她，但他的目光情不自禁地被吸引到她身上。他又打量着她的脸，竭力不去研究这脸上的表情，但终于违反本意，恐怖地看到他所不愿看到的神态。&lt;/p&gt;
+&lt;p&gt;她回过头来，询问般地望了他一眼，微微皱起眉头，又回过头去。“哼，我才不在乎呢！”她仿佛这样对他说，以后就再也不去看他了。&lt;/p&gt;
+&lt;h3 id="2-dot-29-伏伦斯基落马时安娜的激动-卡列宁对她的责备-安娜向丈夫承认自己同伏伦斯基的关系"&gt;2.29 伏伦斯基落马时安娜的激动/卡列宁对她的责备/安娜向丈夫承认自己同伏伦斯基的关系
+&lt;/h3&gt;&lt;p&gt;“我再一次向你伸出我的手臂，要是你愿意走的话。​”卡列宁触触她的手，说。她嫌恶地避开他，不看他的脸，回答说：​“不，不，别来管我，我不走。​”&lt;/p&gt;
+&lt;p&gt;卡列宁用身子把她挡住，让她有时间平静下来。“我第三次向你伸出我的手臂。​”他过了一会儿又对她说。安娜对他望望，不知道说什么才好。培特西公爵夫人走来解救她。&lt;/p&gt;
+&lt;h3 id="2-dot-35-父亲回来后吉娣心情转变-谢尔巴茨基一家回到俄国"&gt;2.35 父亲回来后吉娣心情转变/谢尔巴茨基一家回到俄国
+&lt;/h3&gt;&lt;p&gt;在家里就完全不同了。你可以从容不迫地醒过来，耍耍脾气，发发牢骚，然后定定神，好好考虑考虑各种事情，用不着性急。​”&lt;/p&gt;
+&lt;h3 id="3-dot-2-柯兹尼雪夫在列文伴同下前去钓鱼"&gt;3.2 柯兹尼雪夫在列文伴同下前去钓鱼
+&lt;/h3&gt;&lt;p&gt;长得高高的草温柔地缠绕着车轮和马脚，把种子沾在湿漉漉的车辐和车毂上。&lt;/p&gt;
+&lt;p&gt;哥哥整理好钓竿，坐在树丛下。列文从车上解下马，把它拴好了，走进密不通风的灰绿色野草的海洋中。在积水的洼地上，丝带一般柔软光泽的草长得齐腰高，结满了成熟的种子。&lt;/p&gt;
+&lt;h3 id="3-dot-3-两兄弟为地方自治会的事争吵"&gt;3.3 两兄弟为地方自治会的事争吵
+&lt;/h3&gt;&lt;p&gt;“也许这一切都是好的。可是，我何必为了我从不请教的医疗机构，为了我将来绝不会把我的孩子送去而农民也不愿把他们的孩子送去的那种学校而操心呢？再说，我还不信有必要把他们送去。​”他说。&lt;/p&gt;
+&lt;p&gt;“我想，​”列文说，​“任何活动如果没有个人利益做基础，是不可能持久的。这是个极其普通的哲学道理。​”&lt;/p&gt;
+&lt;p&gt;他说，​“自古以来哲学的主要任务就在于寻求个人利益和共同利益之间的必要联系。这且不去说它，我现在只想纠正你的比喻。桦树不是插的，桦树是栽培的，是播种的，而且需要细心照顾。一个民族，只有认识他们制度的长处，并且加以重视，才有未来，才有历史地位。​”&lt;/p&gt;
+&lt;h3 id="3-dot-5-早饭以后-割草人的午餐-在马施金高地割草"&gt;3.5 早饭以后/割草人的午餐/在马施金高地割草
+&lt;/h3&gt;&lt;p&gt;树林里，杂生在青草丛中的肥大的桦树菌，不时被镰刀割断，老头儿一遇到蘑菇，就弯下腰，捡起来放在怀里。​“再给老太婆送个礼。​”他每次总是这样说。&lt;/p&gt;
+&lt;h3 id="3-dot-9-列文和陶丽在乡下"&gt;3.9 列文和陶丽在乡下
+&lt;/h3&gt;&lt;p&gt;“是的，他来信说您搬来了，他想您会答应让我来帮您点儿忙的。​”列文说。这话他一出口，立刻感到尴尬，连忙住了口，默默地跟着马车一起走。他摘下菩提树的嫩芽，放在嘴里咀嚼。他觉得尴尬，因为他猜想这种本来应该由丈夫做的事情，现在却要外人来帮助，陶丽会不愉快的。奥勃朗斯基拿自己的家务事去麻烦别人，这种作风陶丽确实很不喜欢。她也立刻明白，列文懂得这一层。就因为列文懂得这种细致的感情，陶丽才特别喜欢他。&lt;/p&gt;
+&lt;h3 id="3-dot-21-团长设宴欢迎谢普霍夫斯科依公爵-谢普霍夫斯科依同伏伦斯基谈话-谢普霍夫斯科依企图拉伏伦斯基进官场任职"&gt;3.21 团长设宴欢迎谢普霍夫斯科依公爵/谢普霍夫斯科依同伏伦斯基谈话/谢普霍夫斯科依企图拉伏伦斯基进官场任职
+&lt;/h3&gt;&lt;p&gt;这就是我要对你说的意见。女人——这是男人事业上的主要障碍。爱上一个女人，同时又要干一番事业，这是很困难的。要安心地爱一个女人而又不受干扰，只有一个办法，那就是结婚。&lt;/p&gt;
+&lt;p&gt;就像拖着重物，还要腾出双手做事，只有把重物绑在背上才行，这就是结婚。我结婚后就有这种感觉。我的手突然腾出来了。但是不结婚，拖着这个重物，两只手就腾不出来，你就什么事也干不了。你看看马赞科夫、克鲁波夫吧。他们都是因为女人而断送了自己的前程。&lt;/p&gt;
+&lt;h3 id="3-dot-25-去史维亚日斯基家途中-在富裕的农民家逗留-老农家幸福生活给列文的印象"&gt;3.25 去史维亚日斯基家途中; 在富裕的农民家逗留/老农家幸福生活给列文的印象
+&lt;/h3&gt;&lt;p&gt;“唉，我们地主拿雇工真是没有办法！”列文递给他一杯茶说。​“谢谢！”老头儿接过茶杯，回答，但指指他吃剩的一块糖，谢绝在茶里放糖，​“同雇工怎么搞得好呢？​”他说，​“只会搞得你破产。就拿史维亚日斯基家来说吧。我们知道他家的土地黑得像鸦片，可是收成没有什么好称赞的。就因为照顾得不好嘛！”&lt;/p&gt;
+&lt;h3 id="3-dot-28-在史维亚日斯基书房里继续谈话-列文对学校的看法-列文关于地主经营的结论-必须注意俄国农民的特点并使雇工关心收成"&gt;3.28 在史维亚日斯基书房里继续谈话/列文对学校的看法/列文关于地主经营的结论: 必须注意俄国农民的特点并使雇工关心收成
+&lt;/h3&gt;&lt;p&gt;您把收成对分，一半给劳动者。这样，您自己留下的会多得多，劳动者也会得到更多。要做到这一点，必须先缩小经营规模，促使雇工关心农业收成。&lt;/p&gt;
+&lt;h3 id="5-dot-14-列文的家庭生活-琐碎的家务-同妻子吵嘴-对蜜月的失望"&gt;5.14 列文的家庭生活／琐碎的家务／同妻子吵嘴／对蜜月的失望
+&lt;/h3&gt;&lt;p&gt;他很自然地想替自己辩护，向她证明是她错了；但证明她错就会更加激怒她，就会扩大那条成为一切痛苦根源的裂痕。照习惯他想把过错加到她身上；但另一种更加强烈的情绪却要他尽快消除裂痕，不让它扩大。&lt;/p&gt;
+&lt;h3 id="6-dot-18-安娜和陶丽在归途中和到家后交谈"&gt;6.18 安娜和陶丽在归途中和到家后交谈
+&lt;/h3&gt;&lt;p&gt;我觉得要喜欢一个人，就该喜欢他这个实在的人，而不是喜欢凭空想象中的人。&lt;/p&gt;
+&lt;h3 id="6-dot-21-伏伦斯基同陶丽谈话-指出安娜必须离婚-伏伦斯基要求她在这件事上帮忙"&gt;6.21 伏伦斯基同陶丽谈话, 指出安娜必须离婚; 伏伦斯基要求她在这件事上帮忙
+&lt;/h3&gt;&lt;p&gt;“好的，我去同她说说。可是她自己怎么会不考虑呢？”陶丽说，不知怎的突然想到安娜那种眯缝眼睛的古怪的新习惯。她也想到，安娜总是在接触到她的私生活问题时眯缝起眼睛。“她眯缝起眼睛，仿佛不愿看到生活的全貌。”&lt;/p&gt;
+&lt;h3 id="7-dot-31-火车出发前的景象-安娜万念俱灰-她的自杀"&gt;7.31 火车出发前的景象/安娜万念俱灰/她的自杀
+&lt;/h3&gt;&lt;p&gt;这种画十字的习惯动作，在她心里唤起了一系列少女时代和童年时代的回忆，周围笼罩着的一片黑暗突然打破了，生命带着它种种灿烂欢乐的往事刹那间又呈现在她面前，但她的目光没有离开第二节车厢滚近拢来的车轮。就在前后车轮之间的中心对准她的一瞬间，她丢下红色手提包，头缩在肩膀里，两手着地扑到车厢下面，微微动了动，仿佛立刻想站起来，但又扑通一声跪了下去。就在这一刹那，她对自己的行动大吃一惊。“我这是在哪里？我这是在做什么？为了什么呀？”她想站起来，闪开身子，可是一个冷酷无情的庞然大物撞到她的脑袋上，从她背上轧过。“上帝呀，饶恕我的一切吧！”她说，觉得无力挣扎。一个矮小的乡下人在铁轨上干活，嘴里嘟囔着什么。那支她曾经用来照着阅读那本充满忧虑、欺诈、悲哀和罪恶之书的蜡烛，闪出空前未有的光辉，把原来笼罩在黑暗中的一切都给她照个透亮，接着烛光发出轻微的哔哔啵啵声，昏暗下去，终于永远熄灭了。&lt;/p&gt;</description></item><item><title>辐射探测中的统计学</title><link>https://grant-s-z.github.io/Grant/p/%E8%BE%90%E5%B0%84%E6%8E%A2%E6%B5%8B%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AD%A6/</link><pubDate>Mon, 26 Aug 2024 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/%E8%BE%90%E5%B0%84%E6%8E%A2%E6%B5%8B%E4%B8%AD%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%AD%A6/</guid><description>&lt;h2 id="核衰变的统计分布"&gt;核衰变的统计分布
+&lt;/h2&gt;&lt;h3 id="二项式分布"&gt;二项式分布
+&lt;/h3&gt;&lt;p&gt;假设事件 \(A\) 在单次试验中发生的概率为 \(p\), 在同一试验中不发生的概率为 \(q = 1 - p\). 随机变量 \(\xi\) 表示在一组 \(N\) 次独立无关的试验中事件 \(A\) 发生的次数，则&lt;/p&gt;
+&lt;p&gt;\[P(\xi = n) = \frac{N!}{(N-n)!n!} p^{n}q^{N-n}. \tag{1}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;期望：\(E(\xi) = Np\).&lt;/li&gt;
+&lt;li&gt;方差：\(D(\xi) = Np(1 - p)\).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在核衰变过程中，基本规律为&lt;/p&gt;
+&lt;p&gt;\[N(t) = N_{0}e^{-\lambda t}. \tag{2}\]&lt;/p&gt;
+&lt;p&gt;因而，在 \(t\) 时间内发生的总衰变数为 \(n\) 的概率&lt;/p&gt;
+&lt;p&gt;\[P(\xi = n) = \frac{N_{0}!}{(N_{0} - n)!n!}(1 - e^{-\lambda t})^{n}(e^{-\lambda t})^{N_{0}-n}. \tag{3}\]&lt;/p&gt;
+&lt;h3 id="泊松分布"&gt;泊松分布
+&lt;/h3&gt;&lt;p&gt;当二项式分布中的 \(N\) 很大，\(p\) 很小且 \(m = Np\) 为不大的常数时，可化为泊松分布&lt;/p&gt;
+&lt;p&gt;\[P(\xi = n) = \frac{m^n}{n!}e^{-m}. \tag{4}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;期望：\(E(\xi) = m\).&lt;/li&gt;
+&lt;li&gt;方差：\(D(\xi) = m\).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在核衰变过程中，\(N_0\) 一般非常大，且对于较长寿命的核素，单个核衰变的概率 \(p = 1 - e^{-\lambda t} \approx \lambda t\) 非常小，\(m \approx N_{0}\lambda t\) 不太大，完全符合泊松分布条件&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id="高斯分布"&gt;高斯分布
+&lt;/h3&gt;&lt;p&gt;概率密度&lt;/p&gt;
+&lt;p&gt;\[f(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp [-\frac{(x - m)^2}{2\sigma^{2}}]. \tag{5}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;期望：\(E(X) = m\).&lt;/li&gt;
+&lt;li&gt;方差：\(D(X) = \sigma^{2}\).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以证明，当平均值 \(m \gg 1\) （一般 \(m \geq 20\)）时，泊松分布可用高斯分布代替。因而，一般情况下核衰变的统计规律也服从高斯分布。&lt;/p&gt;
+&lt;h2 id="随机变量组合的分布"&gt;随机变量组合的分布
+&lt;/h2&gt;&lt;div class="footnotes" role="doc-endnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;对于寿命非常短的核素（半衰期为秒量级及以下的核素），在一般观测时间内 \(N_{0}(1 - e^{-\lambda t})\) 比较大，不服从泊松分布。&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description></item><item><title>Build a Blog</title><link>https://grant-s-z.github.io/Grant/p/build-a-blog/</link><pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/build-a-blog/</guid><description>&lt;h2 id="how-to-build-your-own-blog"&gt;How to build your own blog?
+&lt;/h2&gt;&lt;p&gt;I wanna build my own blog for a long time. Long ago, I have heard about Hugo, which is a convenient tool to build a static website quickly.&lt;/p&gt;
+&lt;p&gt;Following the &lt;a class="link" href="https://www.youtube.com/watch?v=hjD9jTi_DQ4&amp;amp;list=PLeiDFxcsdhUrzkK5Jg9IZyiTsIMvXxKZP&amp;amp;index=2" target="_blank" rel="noopener"
+&gt;course&lt;/a&gt; of Youtube, I have probably finished it, and take a record for it now.&lt;/p&gt;
+&lt;h3 id="install-hugo"&gt;Install Hugo
+&lt;/h3&gt;&lt;p&gt;Easy for Macos. Make sure that you have installed brew.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="create-local-website"&gt;Create local website
+&lt;/h3&gt;&lt;p&gt;Be familiar with the commands of Hugo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hugo new site GrantSite
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Now you can open VS Code or Emacs to edit your own blogs. Use&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hugo server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;to preview your website.&lt;/p&gt;
+&lt;p&gt;By the way, you can use Git to download a theme you like.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git submodule add --depth&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;You also need to set your theme in your hugo.yml like this.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;theme: PaperMod
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="upload-your-website"&gt;Upload your website
+&lt;/h3&gt;&lt;p&gt;You need to configure github actions to publish the website to github pages. Before that, you should create a repository and upload it first.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git add README.md
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git commit -m &lt;span class="s2"&gt;&amp;#34;init the website&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git branch -M main
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git remote add origin git@github.com:Grant-S-Z/GrantSite.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git push -u origin main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;After creating it, to make github do the jobs automatically, you need to establish the workflow. First of all, you should go to the repo actions and change the workflow permissions into &amp;ldquo;Read and write permissions&amp;rdquo;. Then, add a .github/workflows/deploy.yml file under the project root directory like this.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;span class="lnt"&gt;27
+&lt;/span&gt;&lt;span class="lnt"&gt;28
+&lt;/span&gt;&lt;span class="lnt"&gt;29
+&lt;/span&gt;&lt;span class="lnt"&gt;30
+&lt;/span&gt;&lt;span class="lnt"&gt;31
+&lt;/span&gt;&lt;span class="lnt"&gt;32
+&lt;/span&gt;&lt;span class="lnt"&gt;33
+&lt;/span&gt;&lt;span class="lnt"&gt;34
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;name: GitHub Pages
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;on:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; push:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; branches:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - main # Set a branch to deploy
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; pull_request:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;jobs:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; deploy:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; runs-on: ubuntu-22.04
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; concurrency:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; group: ${{ github.workflow }}-${{ github.ref }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; steps:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - uses: actions/checkout@v4
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; with:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; submodules: true # Fetch Hugo themes (true OR recursive)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - name: Setup Hugo
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; uses: peaceiris/actions-hugo@v2
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; with:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; hugo-version: &amp;#39;latest&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; # extended: true
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - name: Build
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; run: hugo --minify
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - name: Deploy
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; uses: peaceiris/actions-gh-pages@v3
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; if: github.ref == &amp;#39;refs/heads/main&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; with:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; github_token: ${{ secrets.GITHUB_TOKEN }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; publish_dir: ./public
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;After that, you can see your website. For me, here&amp;rsquo;s &lt;a class="link" href="https://grant-s-z.github.io/GrantSite/" target="_blank" rel="noopener"
+&gt;it&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="how-to-use-emacs-to-write-blogs"&gt;How to use Emacs to write blogs?
+&lt;/h2&gt;&lt;p&gt;You need two packages: easy-hugo and ox-hugo.&lt;/p&gt;
+&lt;p&gt;Just use Emacs to install them, and it is easy to manage your blogs now.&lt;/p&gt;
+&lt;p&gt;Here are my settings:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-emacs-lisp" data-lang="emacs-lisp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;;; hugo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;use-package&lt;/span&gt; &lt;span class="nv"&gt;easy-hugo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;:init&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;easy-hugo-basedir&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;~/Code/Site/GrantSite/&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; 网站本地文件根目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;easy-hugo-url&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;https://Grant-S-Z.github.io/GrantSite&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; url 路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;easy-hugo-sshdomain&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;Grant-S-Z.github.io&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;easy-hugo-previewtime&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;300&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;easy-hugo-default-ext&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;:bind&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;C-c b&amp;#34;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;easy-hugo&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;use-package&lt;/span&gt; &lt;span class="nv"&gt;ox-hugo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;:init&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-hugo-base-dir&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;~/Code/Site/GrantSite/&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-hugo-section&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;post&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;:config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ox-hugo&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Use plantuml in org</title><link>https://grant-s-z.github.io/Grant/p/use-plantuml-in-org/</link><pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/use-plantuml-in-org/</guid><description>&lt;h2 id="what-is-plantuml"&gt;What is plantuml?
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://plantuml.com/zh/" target="_blank" rel="noopener"
+&gt;https://plantuml.com/zh/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="plantuml-samples-in-org"&gt;Plantuml samples in org
+&lt;/h2&gt;&lt;p&gt;There are still many other samples waiting for my encounters.&lt;/p&gt;
+&lt;h3 id="sequence-diagram"&gt;Sequence Diagram
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;span class="lnt"&gt;27
+&lt;/span&gt;&lt;span class="lnt"&gt;28
+&lt;/span&gt;&lt;span class="lnt"&gt;29
+&lt;/span&gt;&lt;span class="lnt"&gt;30
+&lt;/span&gt;&lt;span class="lnt"&gt;31
+&lt;/span&gt;&lt;span class="lnt"&gt;32
+&lt;/span&gt;&lt;span class="lnt"&gt;33
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;@startuml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;scale 2560*1600
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;title Sequence Diagram
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;actor User
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;box &amp;#34;Multichannel Spectrometer Program&amp;#34; #LightBlue
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;participant miniMCA
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;participant Usb
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;participant ThdbDA
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;participant ThdbAD
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;participant PulseHeight
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;participant Spectrum
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;participant Ram
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;== Before User ==
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ThdbDA --&amp;gt; ThdbAD: Analog Signal DA_DA (AD_DA)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ThdbAD --&amp;gt; PulseHeight: Digital Signal ad_data
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;PulseHeight --&amp;gt; Spectrum: pulse_height and pulse_indicator
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;== User Start ==
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;User -&amp;gt; miniMCA:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;miniMCA -&amp;gt; Usb: Start (usb_read_data)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Usb -&amp;gt; Spectrum: cmd_start
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Spectrum -&amp;gt; Ram: address_a and data_a
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Ram -&amp;gt; Usb: address_b and q_b
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Usb -&amp;gt; miniMCA: usb_write_data
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;miniMCA -&amp;gt; User:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;@enduml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="module-diagram"&gt;Module Diagram
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;span class="lnt"&gt;27
+&lt;/span&gt;&lt;span class="lnt"&gt;28
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;@startuml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;scale 2560*1600
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;title Module Diagram
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node final01
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node ThdbDA
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node ThdbAD
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node PulseHeight
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node Spectrum
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node Usb
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node isp1362
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node hex
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node ram
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;node pll
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;final01 -- ThdbDA
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;final01 -- ThdbAD
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;final01 -- PulseHeight
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;final01 -- Spectrum
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;final01 -- Usb
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;final01 -- isp1362
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;final01 -- hex
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;final01 -- ram
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;final01 -- pll
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;@enduml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>热力学与统计物理</title><link>https://grant-s-z.github.io/Grant/p/%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E7%BB%9F%E8%AE%A1%E7%89%A9%E7%90%86/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/%E7%83%AD%E5%8A%9B%E5%AD%A6%E4%B8%8E%E7%BB%9F%E8%AE%A1%E7%89%A9%E7%90%86/</guid><description>&lt;hr&gt;
+&lt;h2 id="基本概念"&gt;基本概念
+&lt;/h2&gt;&lt;h3 id="热平衡与温度"&gt;热平衡与温度
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;平衡态：孤立系统的宏观性质不随时间变化。
+&lt;ul&gt;
+&lt;li&gt;宏观量（广延量、强度量）和微观量&lt;/li&gt;
+&lt;li&gt;态参量（态函数）：平衡态系统的一组可观测的宏观量。&lt;/li&gt;
+&lt;li&gt;状态方程：态参量的函数关系。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;热平衡：热接触一段时间后，两系统达到平衡态。&lt;/li&gt;
+&lt;li&gt;温度：处于热平衡的不同系统的相同宏观性质，用温度 \(T\) 表征。&lt;/li&gt;
+&lt;li&gt;温标：\(T\) 的数值标定。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="热量和热容"&gt;热量和热容
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;热量: 温差导致的能量转移。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;热容: 物质温度升高 1K 所吸收的热量。
+\[C = \frac{\delta Q}{\mathrm{d}T}\]&lt;/p&gt;
+&lt;p&gt;比热容、摩尔热容、定体热容、定压热容&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;潜热: 物质相变过程转移的热量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="理想气体"&gt;理想气体
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;理想气体：分子间没有相互作用，分子自身体积可忽略，服从经典力学。&lt;/li&gt;
+&lt;li&gt;理想气体状态方程：
+\[pV = \nu RT\]&lt;/li&gt;
+&lt;li&gt;道尔顿定律：对处于热平衡的几种理想气体混合物，总压强为各气体分压之和。
+\[p = \left(\sum_{i}n_{i}\right)kT = \sum_{i}p_{i}\]&lt;/li&gt;
+&lt;li&gt;对实际气体，考虑气体分子体积和相互作用，可以用范德瓦耳斯方程作修正：
+\[\left(p+\nu^{2}\frac{a}{V^2}\right)(V-\nu b)=\nu RT\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="气体分子动理论"&gt;气体分子动理论
+&lt;/h2&gt;&lt;h3 id="波尔兹曼分布"&gt;波尔兹曼分布
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;波尔兹曼分布：对于处于热平衡态 \(T\) 的（经典）系统，粒子能量为 \(\epsilon\) 的概率密度满足
+\[P(\epsilon) \propto e^{-\epsilon/kT} = e^{-\beta\epsilon}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;例：外场中的分子数满足波尔兹曼分布
+\[\mathrm{d}N_{\vec{r}}=n_{0}\cdot e^{-\epsilon_{p}(\vec{r})/kT}\cdot\mathrm{d}^{3}\vec{r}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从波尔兹曼分布出发，我们可以导出麦克斯韦速度分布和能量均分定理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="麦克斯韦速度分布"&gt;麦克斯韦速度分布
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;速度分布函数
+\[f(\vec{v})=\frac{\mathrm{d}N_{\vec{v}}}{N\mathrm{d}v_{x}\mathrm{d}v_{y}\mathrm{d}v_{z}}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;麦克斯韦速度分布（理想气体，无外场，平衡态）&lt;/p&gt;
+&lt;p&gt;由波尔兹曼分布可知
+\[f(\vec{v}) \propto e^{-\frac{m\vec{v}^2}{2kT}}\]&lt;/p&gt;
+&lt;p&gt;在速度空间中归一化后可得
+\[f(\vec{v})=\left(\frac{m}{2\pi kT}\right)^{3/2}e^{-m(v_x^2+v_y^2+v_z^2)/2kT}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;考虑外场，我们有麦克斯韦-波尔兹曼分布
+\[dN = n_{0}\cdot\left(\frac{m}{2\pi KT}\right)^{3/2}\cdot e^{-(\epsilon_{p}+\epsilon_{k})/kT}\cdot\mathrm{d}^{3}\vec{r}\cdot\mathrm{d}^{3}\vec{v}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="麦克斯韦速率分布"&gt;麦克斯韦速率分布
+&lt;/h3&gt;&lt;p&gt;速率分布函数 \(f(v)\): 速率 \(v\) 附近，单位速率区间内分子数占总分子数的比例
+\[\frac{\mathrm{d}N_v}{N}=f(v)\mathrm{d}v\]&lt;/p&gt;
+&lt;p&gt;对应速度空间中 \([v,v+\mathrm{d}v]\) 这一球壳，故
+\[f(v)\mathrm{d}v \propto 4\pi v^{2}\mathrm{d}v\cdot e^{-m(v_x^2+v_y^2+v_z^2)/2kT}\]&lt;/p&gt;
+&lt;p&gt;归一化可得麦克斯韦速率分布函数
+\[f(v) = 4\pi\cdot\left(\frac{m}{2\pi kT}\right)^{3/2}\cdot e^{-mv^{2}/2kT}\cdot v^{2}\]&lt;/p&gt;
+&lt;p&gt;&lt;a id="figure--velocity shell"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://grant-s-z.github.io/Grant/ox-hugo/velocity_shell.png"&gt;
+&lt;/figure&gt;
+&lt;p&gt;由此得到三种统计速率：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最可几 (most probable) 速率：\(v_{p} = \sqrt{2kT/m}\)&lt;/li&gt;
+&lt;li&gt;平均 (average) 速率：\(\bar{v}=\int_0^{\infty}vf(v)\mathrm{d}v= \sqrt{8kT/\pi m}\)&lt;/li&gt;
+&lt;li&gt;方均根 (root-mean-square) 速率：\(\sqrt{\bar{v^{2}}}=\sqrt{\int_0^{\infty}v^2 f(v)\mathrm{d}v}=\sqrt{3kT/m}\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="理想气体性质-压强-通量和平均自由程"&gt;理想气体性质：压强、通量和平均自由程
+&lt;/h3&gt;&lt;p&gt;可以从麦克斯韦速度分布出发直接推导理想气体的一些性质，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;压强：
+\[p = \frac{1}{3}nm\bar{v^{2}} = \frac{2}{3}n\bar{K}\]&lt;/p&gt;
+&lt;p&gt;进一步可以得到理想气体方程 \(p = nkT\)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;气体分子通量（分子碰壁数）：每秒撞击单位面积上的分子数。
+\[\Phi = \frac{1}{4}n\bar{v} = \frac{p}{\sqrt{2\pi m kT}}\]&lt;/p&gt;
+&lt;p&gt;可以发现 \(\Phi \propto m^{-1/2}\), 这称为格拉姆定律。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;平均自由程：气体分子在相邻两次碰撞间飞行的平均路程。
+\[\lambda = \frac{1}{\sqrt{2}n\sigma} = \frac{1}{\sqrt{2}n\cdot\pi d^{2}}\]&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="能量均分定理"&gt;能量均分定理
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;自由度 \(f\)（模）：系统的每一个平方形式的能量依赖关系
+平动 \(t\)、转动 \(r\)、振动\(s\)&lt;/li&gt;
+&lt;li&gt;能量均分定理：对温度为 \(T\) 的经典系统，每一个自由度对应一个 \(\frac{1}{2}kT\) 的平均能量
+&lt;ul&gt;
+&lt;li&gt;一般情况下 (\(T &amp;lt; \qty{e3}{K}\)), 振动自由度被冻结, \(f = t + r\).&lt;/li&gt;
+&lt;li&gt;理想气体内能: \(E = fNkT/2 = f\nu RT/2\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="输运与扩散"&gt;输运与扩散
+&lt;/h2&gt;&lt;h3 id="输运与扩散"&gt;输运与扩散
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;黏性：动量输运
+\[\tau_{xz} = \eta \frac{\mathrm{d}\bar{u}_x}{\mathrm{d}z}\]
+黏性系数 \(\eta = nm\lambda\bar{v}/3\)&lt;/li&gt;
+&lt;li&gt;热传导：热量输运
+\[\vec{J} = -\kappa\nabla T\]
+热导率 \(\kappa = C_{V}\lambda\bar{v}/3\)&lt;/li&gt;
+&lt;li&gt;扩散：粒子输运
+\[\vec{\Phi} = -D\nabla n\]
+自扩散系数 \(D = \lambda\bar{v}/3\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="热力学第一定律"&gt;热力学第一定律
+&lt;/h2&gt;&lt;h3 id="准静态过程"&gt;准静态过程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;过程：热力学系统从一个状态变化到另一个状态。&lt;/li&gt;
+&lt;li&gt;准静态过程：在一个过程中，系统的每一个状态都无限接近平衡态。&lt;/li&gt;
+&lt;li&gt;弛豫时间 \(\tau\)：系统平衡破坏后恢复平衡所需时间。
+&lt;ul&gt;
+&lt;li&gt;当 \(\Delta t_{\mathrm{process}}\gg \tau\) 时，过程可视为准静态过程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;准静态过程可以用过程曲线表示
+&lt;ul&gt;
+&lt;li&gt;\(p \text{&amp;ndash;} V, p \text{&amp;ndash;} T, V \text{&amp;ndash;} T\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="热力学第一定律"&gt;热力学第一定律
+&lt;/h3&gt;&lt;p&gt;热一：能量守恒，热量和功均是能量转移形式。
+\[\begin{align*}
+\Delta U &amp;amp;= \Delta Q + \Delta W\\
+&amp;amp;\Downarrow\\
+\mathrm{d}U &amp;amp;= \delta Q + \delta W
+\end{align*}\]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;功：除热量外的其他能量流动。
+&lt;ul&gt;
+&lt;li&gt;体积功：\(\delta W = -p\mathrm{d}V\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;内能 \(U\) （状态量）是态函数，热量 \(Q\) 和功 \(W\) （过程量）不是。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="热容"&gt;热容
+&lt;/h3&gt;&lt;p&gt;对内能 \(U(T, V)\), 有
+\[\mathrm{d}U = \left(\frac{\partial U}{\partial T}\right)_{V}\mathrm{d}T + \left(\frac{\partial U}{\partial V}\right)_{T}\mathrm{d}V\]&lt;/p&gt;
+&lt;p&gt;代入热一，整理可得
+\[\frac{\delta Q}{\mathrm{d}T} = \left(\frac{\partial U}{\partial T}\right)_{V}+\left[\left(\frac{\partial U}{\partial V}\right)_{T}+p\right]\frac{\mathrm{d}V}{\mathrm{d}T}\]&lt;/p&gt;
+&lt;p&gt;由此，定体、定压热容
+\[\begin{align*}
+C_{V}&amp;amp;=\left(\frac{\partial Q}{\partial T}\right)_{V} = \left(\frac{\partial U}{\partial T}\right)_{V}\\
+C_{P}&amp;amp;=\left(\frac{\partial Q}{\partial T}\right)_{p} = \left(\frac{\partial U}{\partial T}\right)_{V}+\left[\left(\frac{\partial U}{\partial V}\right)_{T}+p\right]\left(\frac{\partial V}{\partial T}\right)_{p}
+\end{align*}\]&lt;/p&gt;
+&lt;h3 id="热容"&gt;热容
+&lt;/h3&gt;&lt;p&gt;对理想气体，\(U = \nu \cdot fRT/2\), 结合 \(pV = \nu RT\) 代入热容表达式可以得到
+\[\begin{align*}
+C_{V} &amp;amp;= \frac{f}{2}R\\
+C_{p} &amp;amp;= (\frac{f}{2}+1)R
+\end{align*}\]&lt;/p&gt;
+&lt;p&gt;定义绝热指数（比热容比）
+\[\gamma = \frac{C_p}{C_V} = \frac{f+2}{f}\]&lt;/p&gt;
+&lt;h3 id="应用-几种过程"&gt;应用：几种过程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;等压：\(\mathrm{d}p = 0,\quad TV^{-1} = C\)&lt;/li&gt;
+&lt;li&gt;等温：\(\mathrm{d}T = 0,\quad pV = C\)&lt;/li&gt;
+&lt;li&gt;绝热：\(\delta Q = 0,\quad pV^{\gamma} = C\)&lt;/li&gt;
+&lt;li&gt;等体：\(\mathrm{d}V = 0,\quad \mathrm{d}U = \delta Q\)&lt;/li&gt;
+&lt;li&gt;多方：\(pV^{k} = C,\quad TV^{k-1} = C, \quad p^{k-1}T^{-k}=C\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="应用-循环过程"&gt;应用：循环过程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;热循环：吸收热量对外做功
+&lt;ul&gt;
+&lt;li&gt;效率：
+\[\eta = \frac{W}{Q_{1}} = 1 - \frac{Q_2}{Q_1}\]&lt;/li&gt;
+&lt;li&gt;卡诺循环：两个可逆的绝热和等温过程，\(Q_{1}/Q_{2}=T_{1}/T_{2}\), 效率
+\[\eta_{c} = 1-\frac{T_2}{T_{1}}\]
+温差越大效率越高。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;制冷循环：通过做功转移热量
+&lt;ul&gt;
+&lt;li&gt;效率：
+\[\omega = \frac{Q_1}{W}\]&lt;/li&gt;
+&lt;li&gt;逆卡诺循环：效率
+\[\omega_{c} = \frac{T_{2}}{T_{1}-T_{2}}\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;奥托循环、柴油机循环&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="热力学第二定律"&gt;热力学第二定律
+&lt;/h2&gt;&lt;h3 id="热力学第二定律"&gt;热力学第二定律
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;两种表述
+&lt;ul&gt;
+&lt;li&gt;开尔文：热量不能全部转变为功而不产生其他影响&lt;/li&gt;
+&lt;li&gt;克劳修斯：热量不能自发地从低温传向高温物体&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;可逆过程：可以从末态回到初态，且复原在外界引起的变化的过程。&lt;/li&gt;
+&lt;li&gt;卡诺定理：工作在相同高、低温热库之间的一切可逆机效率相等，不可逆机效率低于可逆机效率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="克劳修斯定理和熵"&gt;克劳修斯定理和熵
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;克劳修斯定理：任一闭循环过程满足
+\[\oint \frac{\delta Q}{T}\leq 0\]
+循环可逆时等号成立。&lt;/li&gt;
+&lt;li&gt;已知 \(\oint \delta Q_{\mathrm{rev}}/T = 0\) 即 \(\delta Q_{\mathrm{rev}}/T\) 路径无关，因此可以定义一个新的态函数
+\[\mathrm{d}S = \frac{\delta Q_{\mathrm{rev}}}{T}\]
+称为熵。显然可逆绝热过程熵不变。&lt;/li&gt;
+&lt;li&gt;回到热一，我们有&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;
+\[\mathrm{d}U = T\mathrm{d}S-p\mathrm{d}V\]
+进一步，我们可以推导麦克斯韦关系。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="熵增原理与熵的计算"&gt;熵增原理与熵的计算
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;熵增原理：由克劳修斯不等式，对于一个孤立系统，\(\mathrm{d}S\geq 0\).&lt;/li&gt;
+&lt;li&gt;计算
+&lt;ul&gt;
+&lt;li&gt;理想气体
+\[\Delta S = S_{2}-S_{1} = \nu C_{V,m}\ln \frac{T_2}{T_1}+\nu R\ln \frac{V_2}{V_{1}}\]&lt;/li&gt;
+&lt;li&gt;计算熵变，关键是寻找一个连接初、末态的可逆过程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;温熵图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="熵的统计基础"&gt;熵的统计基础
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;温度的统计定义&lt;sup id="fnref:2"&gt;&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref"&gt;2&lt;/a&gt;&lt;/sup&gt;
+\[\frac{1}{kT} = \frac{\mathrm{d}\ln\Omega}{\mathrm{d}E}\]&lt;/li&gt;
+&lt;li&gt;结合热一
+\[\mathrm{d}U = T\mathrm{d}S-p\mathrm{d}V\]
+可得
+\[T =\left(\frac{\partial U}{\partial S}\right)_{V}\]
+因此
+\[S = k\ln\Omega\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="footnotes" role="doc-endnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;因为都是态函数，对不可逆过程也成立。&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;参考 Blundell, S. J.; Blundell, K. M. Concepts in Thermal Physics. Chapter 4.&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description></item></channel></rss>

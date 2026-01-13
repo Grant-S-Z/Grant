@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Geant4 on Welcome to Grant's Pages.</title><link>https://grant-s-z.github.io/Grant/tags/geant4/</link><description>Recent content in Geant4 on Welcome to Grant's Pages.</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 23 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://grant-s-z.github.io/Grant/tags/geant4/index.xml" rel="self" type="application/rss+xml"/><item><title>Notes of Geant4</title><link>https://grant-s-z.github.io/Grant/p/notes-of-geant4/</link><pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate><guid>https://grant-s-z.github.io/Grant/p/notes-of-geant4/</guid><description>&lt;h2 id="toolkit-fundamentals"&gt;Toolkit Fundamentals
+&lt;/h2&gt;&lt;h3 id="global-usage-classes"&gt;Global Usage Classes
+&lt;/h3&gt;&lt;h4 id="signature"&gt;Signature
+&lt;/h4&gt;&lt;p&gt;为了使用统一的命名方式，遵循 Geant4 的一些约定，Geant4 内核的每一个类的名字都以前缀 G4 开头。为了便于移植，在 Geant4 中使用 G4 类型(G4int, G4float, G4double 等)代替 C 中原有的类型(int, float, double 等)。&lt;/p&gt;
+&lt;p&gt;基本类型：G4int, G4long, G4float, G4double, G4bool, G4complex, G4String.&lt;/p&gt;
+&lt;p&gt;多数基本类型定义包含了头文件 globals.hh.&lt;/p&gt;
+&lt;h3 id="system-of-units"&gt;System of Units
+&lt;/h3&gt;&lt;h4 id="input"&gt;Input
+&lt;/h4&gt;&lt;p&gt;必须对引入数据指定单位：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;Size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;km&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;density&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;mg&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;cm3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;对于交互式命令，要求：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/gun/energy 15.2 keV
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/gun/position 3 2 -7 meter
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id="output"&gt;Output
+&lt;/h4&gt;&lt;p&gt;可以使用喜欢的单位输出数据，只要将这些数据除以相应的单位：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4cout&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KineticEnergy&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;keV&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="s"&gt;&amp;#34; keV&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;也可以让 Geant4 来选择使用最合适的单位来输出数据，只要指定用户数据的类别(属于 Length, Time, Energy 等)，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4cout&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;G4BestUnit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SetpSize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;Length&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="run"&gt;Run
+&lt;/h3&gt;&lt;h4 id="basic-concept"&gt;Basic Concept
+&lt;/h4&gt;&lt;p&gt;在 Geant4 中，Run 是一个最大的模拟单位，一个 run 由一系列的事件组成，它是 G4Run 的 一个对象，由 G4RunManager 的方法 beamOn() 启动。在一个 run 过程中，探测器几何，灵敏 探测器设置，和模拟中所使用的物理过程，都保持不变。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;G4RunManager&lt;/strong&gt; 管理一个 run 的相关进程。其公用方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;initialize()&lt;/p&gt;
+&lt;p&gt;Geant4 内核必须的所有初始化由该方法触发，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;探测器几何&lt;/li&gt;
+&lt;li&gt;粒子和物理过程&lt;/li&gt;
+&lt;li&gt;反应截面等计算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;该方法必须在首个 run 执行之前调用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;beamOn(G4int numberOfEvent)&lt;/p&gt;
+&lt;p&gt;触发一个实际的模拟过程。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;G4UserRunAction&lt;/strong&gt; 是一个用户行为类。其虚拟方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;beginOfRunAction()&lt;/p&gt;
+&lt;p&gt;在 beamOn() 开始时被调用，常用情形：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置一个 run 标识数&lt;/li&gt;
+&lt;li&gt;登记一个统计图&lt;/li&gt;
+&lt;li&gt;设置探测器运行条件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;endOfRunAction()&lt;/p&gt;
+&lt;p&gt;在 beamOn() 结束时被调用，常用情形：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储/输出统计图&lt;/li&gt;
+&lt;li&gt;操作 run 摘要&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="event"&gt;Event
+&lt;/h3&gt;&lt;p&gt;G4Event 代表一个事件，它是一个包含所有被模拟事件的输入输出信息的类的实例。这个对 象在 G4RunManager 中被创建并传递给 G4EventManager。可以通过 G4RunManager 的方法 getCurrentEvent() 获取当前正在处理的事件指针。&lt;/p&gt;
+&lt;h2 id="detector-definition-and-response"&gt;Detector Definition and Response
+&lt;/h2&gt;&lt;h3 id="geometry"&gt;Geometry
+&lt;/h3&gt;&lt;h4 id="solid-volume"&gt;Solid Volume
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Box&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4Box&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;G4String&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;pName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pX&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pZ&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Tube&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4Tubs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;G4String&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;pName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pRMin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pRMax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pDz&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pSPhi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pDPhi&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Full Solid Sphere&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-c++" data-lang="c++"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;G4Orb&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;G4String&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;pName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;G4double&lt;/span&gt; &lt;span class="n"&gt;pRmax&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id="logical-volume"&gt;Logical Volume
+&lt;/h4&gt;&lt;p&gt;逻辑体管理那些与给定实体和材料的探测器单元有关的信息，与它们在探测器中的物理位置无关。&lt;/p&gt;
+&lt;h4 id="physical-volume"&gt;Physical Volume
+&lt;/h4&gt;&lt;p&gt;物理体指明了那些描述探测器单元的 volumes 的空间位置。&lt;/p&gt;
+&lt;h3 id="material"&gt;Material
+&lt;/h3&gt;&lt;h3 id="electromagnetic-field"&gt;Electromagnetic Field
+&lt;/h3&gt;&lt;h3 id="hits"&gt;Hits
+&lt;/h3&gt;&lt;h2 id="tracking-and-physics"&gt;Tracking and Physics
+&lt;/h2&gt;&lt;h3 id="tracking"&gt;Tracking
+&lt;/h3&gt;&lt;h3 id="physics-processes"&gt;Physics Processes
+&lt;/h3&gt;&lt;p&gt;物理过程描述粒子是怎样和物质发生相互作用的。&lt;/p&gt;
+&lt;p&gt;每个物理过程都有两组方法，GetPhysicalInteractionLength (GPIL) 和 DoIt，它们在粒子跟踪中扮演重要角色。GPIL 方法给出从当前时空位置到下个时空位置的步长，它根据物理过程的反应截面信息来计算发生反应的概率。在 step 的结尾调用 DoIt 方法。DoIt 方法实现了这个反应的细节，改变粒子的能量、动量、方向和位置，还产生次级粒子（如需要）。&lt;/p&gt;
+&lt;h3 id="particles"&gt;Particles
+&lt;/h3&gt;&lt;p&gt;G4ParticleDefinition 集中了反应一个粒子属性的信息，如名称，质量，自旋，寿命和衰变模式。&lt;/p&gt;
+&lt;h3 id="production-threshold-versus-tracking-cut"&gt;Production Threshold versus Tracking Cut
+&lt;/h3&gt;&lt;h3 id="cuts-per-region"&gt;Cuts per Region
+&lt;/h3&gt;&lt;h2 id="user-actions"&gt;User Actions
+&lt;/h2&gt;&lt;h3 id="mandatory-user-actions-and-initializations"&gt;Mandatory User Actions and Initializations
+&lt;/h3&gt;&lt;p&gt;Geant4 有三个虚类，用户为了实现模拟必须重载它们的方法。它们要求用户定义探测器，指定将要使用的物理过程，并且描述如何初始化将要产生的粒子。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;G4VUserDetectorConstruction&lt;/li&gt;
+&lt;li&gt;G4VUserPhysicsList&lt;/li&gt;
+&lt;li&gt;G4VUserPrimaryGeneratorAction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="optional-user-actions"&gt;Optional User Actions
+&lt;/h3&gt;&lt;p&gt;有 5 个虚类，用于增强在不同阶段对模拟的控制，用户必须重载这些类的方法。每个 action 类的每个方法都有一个空的缺省实现，允许用户继承并实现期望的类和方法。用户 action 类的对象，必须向 G4RunManager 注册。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;G4UserRunAction&lt;/li&gt;
+&lt;li&gt;G4UserEventAction&lt;/li&gt;
+&lt;li&gt;G4UserStackingAction&lt;/li&gt;
+&lt;li&gt;G4UserTrackingAction&lt;/li&gt;
+&lt;li&gt;G4UserSteppingAction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="control"&gt;Control
+&lt;/h2&gt;</description></item></channel></rss>
